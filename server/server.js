@@ -7,7 +7,7 @@ const db = database.connect();
 
 app.use(cors());
 app.use(express.json());
-
+//For test Branch
 app.get('/message', (req, res) => {
     res.json({ message: "Hello from server!" });
 });
