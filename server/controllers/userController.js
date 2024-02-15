@@ -3,7 +3,6 @@ require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const { createHash } = require('crypto');
 const User = require('../models/userModel');
-const verifyToken = require('../middleware/authMiddleware');
 
 
 

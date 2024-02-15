@@ -10,6 +10,12 @@ const verifyToken = async (req, res, next) => {
 
     try {
         const decoded = await promisify(jwt.verify)(token,  process.env.JWT_SECRET);
+
+        const currentTimestamp = Math.floor(Date.now() / 1000);
+        if (decoded.exp < currentTimestamp) {
+            return res.status(401).json({ status: "Unauthorized", message: 'Token has expired' });
+        }
+        
         req._id = decoded._id;
         next();
     } catch (error) {
