@@ -1,16 +1,22 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const database = require('./db');
+const bodyParser = require('body-parser');
+
+const database = require('./services/db');
+const userRoutes = require('./routes/userRoutes');
+const businessRoutes = require('./routes/businessRoutes');
+
 const app = express();
-const port = 8000;
+const port = process.env.PORT;
 const db = database.connect();
 
 app.use(cors());
 app.use(express.json());
-//For test Branch
-app.get('/message', (req, res) => {
-    res.json({ message: "Hello from server!" });
-});
+app.use(bodyParser.json());
+
+app.use('/api/user', userRoutes);
+app.use('/api/business', businessRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running on port : ${port}`);
