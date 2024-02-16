@@ -156,6 +156,61 @@ const businessLoginValidation = (req, res, next) => {
         res.status(500).json({ message: 'Internal Server Error' });
     });
 };
+const businessUpdateValidation = (req, res, next) => {
+    const { name, long_name, phone, email, password, type, profile_image, images, content, services, address } = req.body;
+    const validationRules = [];
+
+    if (name !== undefined) {
+        validationRules.push(body('name').notEmpty().withMessage('Name is required').isString().withMessage('Name must be a string'));
+    }
+    if (long_name !== undefined) {
+        validationRules.push(body('long_name').notEmpty().withMessage('Long name is required').isString().withMessage('Long name must be a string'));
+    }
+    if (email !== undefined) {
+        validationRules.push(body('email').notEmpty().withMessage('Email is required').isEmail().withMessage('Invalid email format'));
+    }
+    if (password !== undefined) {
+        validationRules.push(body('password').notEmpty().withMessage('Password is required'));
+    }
+    if (phone !== undefined) {
+        validationRules.push(body('phone').optional().isMobilePhone('any', { strictMode: false }).withMessage('Invalid phone number'));
+    }
+    if (address !== undefined) {
+        validationRules.push(body('address') &&  body('address').custom(addressValidator));
+    }
+    if (type !== undefined) {
+        validationRules.push(body('type').notEmpty().withMessage('Type is required'));
+    }
+    if (profile_image !== undefined) {
+        validationRules.push(body('profile_image').optional().isString().withMessage('profile_image must be a string'));
+    }
+    if (images !== undefined) {
+        validationRules.push(body('images').optional().isArray().withMessage('images must be a array'));
+    }
+    if (content !== undefined) {
+        validationRules.push(body('content').optional().isString().withMessage('content must be a string'));
+    }
+    if (services !== undefined) {
+        validationRules.push(body('services').optional().isArray().withMessage('services must be a array'));
+    }
+    
+  
+    Promise.all(validationRules.map((validationRule) => validationRule.run(req)))
+    .then(() => {
+        const errors = validationResult(req);
+        if (errors.isEmpty()) {
+            return next();
+        }
+  
+        const errorMessage = errors.array()[0].msg;
+        return res.status(422).json({ message: errorMessage });
+    })
+    .catch((error) => {
+        console.error('Validation error:', error);
+        res.status(500).json({ message : 'Internal Server Error' });
+    });
+};
+
 
   
 
@@ -166,4 +221,5 @@ module.exports = {
 
   businessRegisterValidation,
   businessLoginValidation,
+  businessUpdateValidation
 };

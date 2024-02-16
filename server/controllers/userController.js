@@ -1,7 +1,9 @@
 
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
+const { promisify } = require('util');
 const { createHash } = require('crypto');
+const nodemailer = require('nodemailer');
 const User = require('../models/userModel');
 
 
@@ -71,6 +73,24 @@ class UserController {
         }
     }
 
+    static async logout(req, res){
+        try {
+            const user = await User.findById(req._id);
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+            
+            user.lastonline_time = Date.now();
+            //Ya burada ya ön tarafta token tutan cookie temizlenecek
+
+            await user.save();
+            return res.status(200).json({ status: 'success', message: 'User logout' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
+        } 
+    }
+
     static async updateAccount(req, res) {
         try {
             const user = await User.findById(req._id);
@@ -88,7 +108,7 @@ class UserController {
             if(address) { user.address = address; }
 
             await user.save();
-            return res.status(200).json({ message: 'User updated' });
+            return res.status(200).json({ status: 'success', message: 'User updated' });
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal server error' });
@@ -100,11 +120,80 @@ class UserController {
             const result = await User.deleteOne({ _id: req._id });
     
             if (result.deletedCount === 1) {
-                return res.status(200).json({ message: 'User deleted' });
+                return res.status(200).json({ status: 'success', message: 'User deleted' });
             }
             return res.status(404).json({ message: 'User not found' });
             
         } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }
+
+    static async forgotPassword(req, res){
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.outlook.com',
+            port: 587,
+            secure: false,
+            auth: {
+                user: process.env.AUTH_EMAIL_USER,
+                pass: process.env.AUTH_EMAIL_PASS,
+            },
+        });
+        const { email } = req.body;
+
+        try {
+            const user = await User.findOne({ email });
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+
+            const resetToken = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_FORGOT_TOKEN_EXPIRES_IN });
+            const resetLink = `http://localhost:3000/user/reset-password/${resetToken}`;
+            // Burası ön taraftaki password reset sayfasının tokenlı linki olacak
+
+            const mailOptions = {
+                from: process.env.AUTH_EMAIL_USER,
+                to: email,
+                subject: 'Password Reset',
+                html: `<p>Please click the following link to reset your password:</p><p>${resetLink}</p>`,
+            };
+
+            await transporter.sendMail(mailOptions);
+            res.status(200).json({ status: 'success', message: 'Password reset link sent to your email' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }
+
+    static async resetPassword(req, res){
+        const { token } = req.params;
+        const { password } = req.body;
+        var email = "";
+
+        try {
+            try {
+                const decoded = await promisify(jwt.verify)(token,  process.env.JWT_SECRET);
+                email = decoded.email;
+            } catch (error) {
+                if (error.name === 'TokenExpiredError') {
+                    return res.status(401).json({ status: "Unauthorized", message: 'Token has expired' });
+                }
+                return res.status(401).json({ status: "Unauthorized" , message: 'Invalid token' });
+            }
+            const user = await User.findOne({ email: email });
+
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+
+            user.password =  createHash("md5").update(password).digest("hex");
+            await user.save();
+
+            res.status(200).json({ status: 'success',  message: 'Password reset successful' });
+        } catch (error) {
+
             console.error(error);
             res.status(500).json({ message: 'Internal server error' });
         }
