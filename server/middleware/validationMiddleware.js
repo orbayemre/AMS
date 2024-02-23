@@ -19,6 +19,31 @@ const addressValidator = (value) => {
         console.log(error)
     }
 };
+const appointmentDateValidator = (value) => {
+  try{
+    if (!value) {      
+      throw new Error(`date is required`);
+    }
+
+    const validKeys = ['day', 'month', 'year', 'start', 'end'];
+    const invalidKeys = Object.keys(value).filter((key) => !validKeys.includes(key));
+    
+    if (invalidKeys.length > 0) {
+      throw new Error(`Invalid keys in address: ${invalidKeys.join(', ')}`);
+    }
+
+    validKeys.forEach((key) => {
+      if (value[key] === null || value[key] === undefined) {
+        throw new Error(`date.${key} is required`);
+      }
+    });
+    
+    
+    return true;
+  }catch (error) {
+      console.log(error)
+  }
+};
 
 
 // USER VALIDATIONS 
@@ -212,6 +237,53 @@ const businessUpdateValidation = (req, res, next) => {
 };
 
 
+// APPOINTMENT VALIDATIONS
+const makeAppointmentValidation = (req, res, next) =>{
+  const validationRules = [
+    body('business_id').notEmpty().withMessage('business_id is required'),
+    body('date').custom(appointmentDateValidator),
+    body('start_time').custom((value) => {
+      
+      if (!value) {      
+        throw new Error(`start_time is required`);
+      }
+      try {
+        start_time = new Date(value + 'Z');
+        return true;
+      }catch (error) {
+        throw new Error(`start_time must be Date`);
+      }
+  
+    }),
+    body('end_time').custom((value) => {
+      if (!value) {      
+        throw new Error(`end_time is required`);
+      }
+      try {
+        end_time = new Date(value + 'Z');
+        return true;
+      }catch (error) {
+        throw new Error(`end_time must be Date`);
+      }
+  
+    }),
+  ];
+
+  Promise.all(validationRules.map((validationRule) => validationRule.run(req)))
+    .then(() => {
+      const errors = validationResult(req);
+      if (errors.isEmpty()) {
+        return next();
+      }
+      const errorMessage = errors.array()[0].msg;
+      return res.status(422).json({ message: errorMessage });
+    })
+    .catch((error) => {
+      console.error('Validation error:', error);
+      res.status(500).json({ message : 'Internal Server Error' });
+    });
+
+}
   
 
 module.exports = {
@@ -221,5 +293,7 @@ module.exports = {
 
   businessRegisterValidation,
   businessLoginValidation,
-  businessUpdateValidation
+  businessUpdateValidation,
+
+  makeAppointmentValidation
 };

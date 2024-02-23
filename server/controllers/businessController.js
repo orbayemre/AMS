@@ -33,7 +33,7 @@ class BusinessController {
     
             const token = jwt.sign({ _id: newBusiness._id, email: newBusiness.email }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
     
-            res.status(201).json({ status: 'success', token, data:{ business: newBusiness } });
+            return res.status(201).json({ status: 'success', token, data:{ business: newBusiness } });
         } catch (error) {
             
             console.log(error)
@@ -68,7 +68,7 @@ class BusinessController {
               return res.status(404).json({ message: 'Business not found' });
             }
         
-            res.status(200).json({ business });
+            return res.status(200).json({ business });
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal server error' });
@@ -170,7 +170,7 @@ class BusinessController {
             };
 
             await transporter.sendMail(mailOptions);
-            res.status(200).json({ status: 'success', message: 'Password reset link sent to your email' });
+            return res.status(200).json({ status: 'success', message: 'Password reset link sent to your email' });
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal server error' });
@@ -201,7 +201,7 @@ class BusinessController {
             business.password =  createHash("md5").update(password).digest("hex");
             await business.save();
 
-            res.status(200).json({ status: 'success',  message: 'Password reset successful' });
+            return res.status(200).json({ status: 'success',  message: 'Password reset successful' });
         } catch (error) {
 
             console.error(error);
