@@ -284,6 +284,51 @@ const makeAppointmentValidation = (req, res, next) =>{
     });
 
 }
+const closeAppointmentValidation = (req, res, next) =>{
+  const validationRules = [
+    body('date').custom(appointmentDateValidator),
+    body('start_time').custom((value) => {
+      
+      if (!value) {      
+        throw new Error(`start_time is required`);
+      }
+      try {
+        start_time = new Date(value + 'Z');
+        return true;
+      }catch (error) {
+        throw new Error(`start_time must be Date`);
+      }
+  
+    }),
+    body('end_time').custom((value) => {
+      if (!value) {      
+        throw new Error(`end_time is required`);
+      }
+      try {
+        end_time = new Date(value + 'Z');
+        return true;
+      }catch (error) {
+        throw new Error(`end_time must be Date`);
+      }
+  
+    }),
+  ];
+
+  Promise.all(validationRules.map((validationRule) => validationRule.run(req)))
+    .then(() => {
+      const errors = validationResult(req);
+      if (errors.isEmpty()) {
+        return next();
+      }
+      const errorMessage = errors.array()[0].msg;
+      return res.status(422).json({ message: errorMessage });
+    })
+    .catch((error) => {
+      console.error('Validation error:', error);
+      res.status(500).json({ message : 'Internal Server Error' });
+    });
+
+}
   
 
 module.exports = {
@@ -295,5 +340,6 @@ module.exports = {
   businessLoginValidation,
   businessUpdateValidation,
 
-  makeAppointmentValidation
+  makeAppointmentValidation,
+  closeAppointmentValidation
 };

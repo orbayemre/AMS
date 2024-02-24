@@ -9,13 +9,13 @@ const dateSchema = new mongoose.Schema({
 });
 
 const appointmentSchema = new mongoose.Schema({
-    user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     business_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Business', required: true },
     date: { type: dateSchema, required: true },
     start_time: { type: Date, required: true },
     end_time: { type: Date, required: true },
     type: { type: String, enum: ['normal', 'closed'], default: 'normal' },
-    status: { type: String, enum: ['pending', 'approved', 'rejected'], default: 'pending' },
+    status: { type: String, enum: ['pending', 'approved', 'rejected', 'canceled', 'closed'], default: 'pending' },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
 });
