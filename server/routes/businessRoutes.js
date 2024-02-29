@@ -13,6 +13,8 @@ router.post('/update-account', verifyToken, businessUpdateValidation, BusinessCo
 router.post('/delete-account', verifyToken, BusinessController.deleteAccount);
 router.post('/forgot-password', BusinessController.forgotPassword);
 router.post('/reset-password/:token', BusinessController.resetPassword);
+router.post('/add-off-time', verifyToken, BusinessController.addSpecialOffTime);
+router.post('/remove-off-time', verifyToken, BusinessController.removeSpecialOffTime);
 
 
 
