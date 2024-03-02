@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const Appointment = require('../models/appointmentModel');
 const Business = require('../models/businessModel');
 const User = require('../models/userModel');
-
+const Popularity =  require('../services/popularity');
 
 
 class AppointmentController {
@@ -45,6 +45,7 @@ class AppointmentController {
                 status: "pending",
             });
 
+            await Popularity.updatePopularity(business_id,"forMake");
             await appointment.save();
             return res.status(201).json({ status: 'success', message: 'Appointment created successfully' });
 
@@ -132,6 +133,7 @@ class AppointmentController {
                 status: "closed",
             });
 
+            await Popularity.updatePopularity(business_id,"forClose");
             await appointment.save();
             return res.status(200).json({ status: 'success', message: 'Appointment closed successfully' });
 
@@ -166,6 +168,8 @@ class AppointmentController {
             
             appointment.status = "approved";
             appointment.updatedAt = Date.now();
+            
+            await Popularity.updatePopularity(business_id,"forApprove");
             await appointment.save();
             return res.status(200).json({ status: 'success', message: 'Appointment approved successfully' });
 
@@ -218,6 +222,8 @@ class AppointmentController {
                 await appointment.save();
                 return res.status(200).json({ status: 'success', message: 'Appointment rejected and closed successfully' });
             }
+            
+            await Popularity.updatePopularity(business_id,"forReject");
             await appointment.save();
             return res.status(200).json({ status: 'success', message: 'Appointment rejected successfully' });
 

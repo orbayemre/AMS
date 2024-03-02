@@ -140,7 +140,7 @@ const businessRegisterValidation = (req, res, next) => {
     body('email').notEmpty().withMessage('Email is required').isEmail().withMessage('Invalid email format'),
     body('password').notEmpty().withMessage('Password is required'),
     body('phone').optional().isMobilePhone('any', { strictMode: false }).withMessage('Invalid phone number'),
-    body('type').notEmpty().withMessage('Type is required'),
+    body('type').notEmpty().withMessage('Type is required').isIn(['hairdresser','beauty-salon','psychologist','dental-clinic','astroturf','auto-service','massage-center','consultancy-service']).withMessage('Invalid value for type'),
     body('address').custom(addressValidator),
     body('working_days').notEmpty().withMessage('working_days is required'),
     body('working_hours').notEmpty().withMessage('working_hours is required'),

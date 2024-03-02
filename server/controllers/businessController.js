@@ -4,6 +4,7 @@ const { promisify } = require('util');
 const { createHash } = require('crypto');
 const nodemailer = require('nodemailer');
 const Business = require('../models/businessModel');
+const Popularity =  require('../services/popularity');
 
 
 class BusinessController {
@@ -260,6 +261,7 @@ class BusinessController {
             else{
                 return res.status(401).json({ message: 'New special off times not provided' });
             }
+            await Popularity.updatePopularity(business_id,"forSpecial");
             await business.save();
             return res.status(200).json({ status: 'success', message: 'Special off times updated' });
 
