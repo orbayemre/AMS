@@ -47,7 +47,7 @@ const businessSchema = new mongoose.Schema({
     phone: { type: String , default: null},
     email: { type: String, required: true,unique: true },
     password: { type: String, required: true },
-    type: { type: String , required: true},
+    type: { type: String , enum: ['hairdresser','beauty-salon','psychologist','dental-clinic','astroturf','auto-service','massage-center','consultancy-service'], required: true},
     profile_image: { type: String , default: null},
     images: { type: Array , default: null},
     content: { type: String , default: null},
@@ -55,6 +55,9 @@ const businessSchema = new mongoose.Schema({
     address: { type: addressSchema , default: {city: null,district: null,street: null,address_text: null,latitude: null,longitude: null} } ,
     working_days : { type: workingDaysSchema , required: true},
     working_hours : { type: workingHoursSchema , required: true},
+    special_off_times : { type: Array , default: null },
+    timezone : {type: String, default: "UTC+3"},
+    popularity: { type: Number, default: 1.0 },
     created_time: { type: Date, default: Date.now },
     lastonline_time: { type: Date, default: Date.now },
 });
