@@ -53,6 +53,8 @@ const businessSchema = new mongoose.Schema({
     content: { type: String , default: null},
     services: { type: Array , default: null},
     address: { type: addressSchema , default: {city: null,district: null,street: null,address_text: null,latitude: null,longitude: null} } ,
+    has_sub :{ type: Boolean, default: false},
+    b_type: { type: String, enum: ['main', 'sub'], default: 'main' },
     working_days : { type: workingDaysSchema , required: true},
     working_hours : { type: workingHoursSchema , required: true},
     special_off_times : { type: Array , default: null },
@@ -63,4 +65,20 @@ const businessSchema = new mongoose.Schema({
 });
 const Business = mongoose.model('Business', businessSchema,'businesses');
 
+const subBusinessSchema = new mongoose.Schema({
+    business_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Business', required: true },
+    name: { type: String, required: true, unique: true },
+    long_name: { type: String, default: null },
+    phone: { type: String , default: null},
+    image: { type: Array , default: null},
+    content: { type: String , default: null},
+    b_type: { type: String, enum: ['main', 'sub'], default: 'sub' },
+    working_days : { type: workingDaysSchema , required: true},
+    working_hours : { type: workingHoursSchema , required: true},
+    special_off_times : { type: Array , default: null },
+});
+
+const SubBusiness = mongoose.model('SubBusiness', subBusinessSchema,'businesses');
+
 module.exports = Business;
+module.exports.SubBusiness = SubBusiness;

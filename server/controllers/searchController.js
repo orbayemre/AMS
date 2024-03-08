@@ -12,7 +12,7 @@ class SearchController {
 
     
     static async setParamsObject(params){
-        var query = {};
+        var query = {'b_type':'main'};
 
         if(params.page && params.page !== ""){
             SearchController.page = parseInt(params.page);

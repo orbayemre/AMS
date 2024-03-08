@@ -2,6 +2,7 @@ require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const Appointment = require('../models/appointmentModel');
 const Business = require('../models/businessModel');
+const {SubBusiness} = require('../models/businessModel');
 const User = require('../models/userModel');
 const Popularity =  require('../services/popularity');
 
@@ -10,17 +11,28 @@ class AppointmentController {
 
     static async makeAppointment(req, res) {
         try {
-            const { business_id, date, start_time, end_time } = req.body;
+            const { business_id, date, start_time, end_time, is_sub } = req.body;
             const user_id = req._id;
 
             const existingUser = await User.findById(user_id);
             if (!existingUser) {
                 return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
             }
-            
-            const existingBusiness = await Business.findById(business_id);
-            if (!existingBusiness) {
-                return res.status(404).json({ message: 'Business not found' });
+            if(!is_sub){
+                const existingBusiness = await Business.findOne({_id:business_id, b_type:"main"});
+                if (!existingBusiness) {
+                    return res.status(404).json({ message: 'Business not found' });
+                }
+                if(existingBusiness.has_sub){
+                    return res.status(401).json({ message: 'This business working with sub.' });
+                }
+            }
+            else{
+                const existingSubBusiness = await SubBusiness.findOne({_id:business_id, b_type:"sub"});
+                if (!existingSubBusiness) {
+                    return res.status(404).json({ message: 'Sub-business not found' });
+                }
+
             }
 
             const existingAppointment = await Appointment.findOne({
@@ -103,17 +115,37 @@ class AppointmentController {
     static async closeAppointment(req, res){
         
         try {
-            const {date, start_time, end_time } = req.body;
+            const {date, start_time, end_time, is_sub, sub_id } = req.body;
             const business_id = req._id;
+            const app_business_id = is_sub ? sub_id : req._id;
 
-            
-            const existingBusiness = await Business.findById(business_id);
-            if (!existingBusiness) {
-                return res.status(403).json({ status: "Unauthorized", message: 'Business not found' });
+            if(!is_sub){
+                const existingBusiness = await Business.findOne({_id:business_id, b_type:"main"});
+                if (!existingBusiness) {
+                    return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+                }
+                if(existingBusiness.has_sub){
+                    return res.status(401).json({ message: 'This business working with sub.' });
+                }
             }
+            else{
+                const existingBusiness = await Business.findOne({_id:business_id, b_type:"main"});
+                if (!existingBusiness) {
+                    return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+                }
+
+                const existingSubBusiness = await SubBusiness.findOne({ _id: sub_id, b_type:"sub" });
+                if (!existingSubBusiness) {
+                    return res.status(404).json({ message: 'Sub-business not found' });
+                }
+                if (existingSubBusiness.business_id != business_id) {
+                    return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+                }
+            }
+            
 
             const existingAppointment = await Appointment.findOne({
-                business_id,
+                'business_id':app_business_id,
                 'date.day': date.day,
                 'date.month': date.month,
                 'date.year': date.year,
@@ -125,7 +157,7 @@ class AppointmentController {
             }
             
             const appointment = new Appointment({ 
-                business_id,
+                'business_id':app_business_id,
                 date,
                 start_time : new Date(start_time + 'Z'),
                 end_time : new Date(end_time + 'Z'),
@@ -145,20 +177,41 @@ class AppointmentController {
     //Business
     static async approveAppointment(req, res){
         try {
-            const { appointment_id } = req.body;
+            const { appointment_id, is_sub, sub_id } = req.body;
             const business_id = req._id;
+            const app_business_id = is_sub ? sub_id : req._id;
 
-            const existingBusiness = await Business.findById(business_id);
-            if (!existingBusiness) {
-                return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+            if(!is_sub){
+                const existingBusiness = await Business.findOne({_id:business_id, b_type:"main"});
+                if (!existingBusiness) {
+                    return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+                }
+                if(existingBusiness.has_sub){
+                    return res.status(401).json({ message: 'This business working with sub.' });
+                }
             }
+            else{
+                const existingBusiness = await Business.findOne({_id:business_id, b_type:"main"});
+                if (!existingBusiness) {
+                    return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+                }
+
+                const existingSubBusiness = await SubBusiness.findOne({ _id: sub_id, b_type:"sub" });
+                if (!existingSubBusiness) {
+                    return res.status(404).json({ message: 'Sub-business not found' });
+                }
+                if (existingSubBusiness.business_id != business_id) {
+                    return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+                }
+            }
+            
 
             const appointment = await Appointment.findOne({ _id:appointment_id });
             if (!appointment) {
                 return res.status(400).json({ message: 'Appointment not found' });
             }
 
-            if (appointment.business_id != business_id) {
+            if (appointment.business_id != app_business_id) {
                 return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
             }
             
@@ -182,12 +235,32 @@ class AppointmentController {
     //Business
     static async rejectAppointment(req, res){
         try {
-            const { appointment_id, closed } = req.body;
+            const { appointment_id, closed, is_sub, sub_id} = req.body;
             const business_id = req._id;
+            const app_business_id = is_sub ? sub_id : req._id;
 
-            const existingBusiness = await Business.findById(business_id);
-            if (!existingBusiness) {
-                return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+            if(!is_sub){
+                const existingBusiness = await Business.findOne({_id:business_id, b_type:"main"});
+                if (!existingBusiness) {
+                    return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+                }
+                if(existingBusiness.has_sub){
+                    return res.status(401).json({ message: 'This business working with sub.' });
+                }
+            }
+            else{
+                const existingBusiness = await Business.findOne({_id:business_id, b_type:"main"});
+                if (!existingBusiness) {
+                    return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+                }
+
+                const existingSubBusiness = await SubBusiness.findOne({ _id: sub_id, b_type:"sub" });
+                if (!existingSubBusiness) {
+                    return res.status(404).json({ message: 'Sub-business not found' });
+                }
+                if (existingSubBusiness.business_id != business_id) {
+                    return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+                }
             }
 
             const appointment = await Appointment.findOne({ _id:appointment_id });
@@ -195,7 +268,7 @@ class AppointmentController {
                 return res.status(400).json({ message: 'Appointment not found' });
             }
 
-            if (appointment.business_id != business_id) {
+            if (appointment.business_id != app_business_id) {
                 return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
             }
 
