@@ -4,6 +4,7 @@ const { promisify } = require('util');
 const { createHash } = require('crypto');
 const nodemailer = require('nodemailer');
 const Business = require('../models/businessModel');
+const {SubBusiness} = require('../models/businessModel');
 const Popularity =  require('../services/popularity');
 
 
@@ -11,7 +12,7 @@ class BusinessController {
     
     static async createBusiness(req, res) {
         try {
-            const { name, long_name, phone, email, password, type, content, services, address, working_days, working_hours, timezone } = req.body;
+            const { name, long_name, phone, email, password, type, content, services, address, working_days, working_hours, timezone, has_sub } = req.body;
             const existingBusiness = await Business.findOne({ email });
             if (existingBusiness) {
                 return res.status(400).json({ message: 'Business already exists' });
@@ -27,6 +28,7 @@ class BusinessController {
                 content, 
                 services,
                 address,
+                has_sub,
                 working_days,
                 working_hours,
                 timezone
@@ -61,22 +63,6 @@ class BusinessController {
             res.status(500).json({ message: 'Internal server error' });
         }
     }
-    
-    static async getMyBusiness(req, res) {
-        try {
-            const business = await Business.findById(req._id);
-        
-            if (!business) {
-              return res.status(404).json({ message: 'Business not found' });
-            }
-        
-            return res.status(200).json({ business });
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ message: 'Internal server error' });
-        }
-    }
-
 
     static async logout(req, res){
         try {
@@ -91,6 +77,181 @@ class BusinessController {
 
             await business.save();
             return res.status(200).json({ status: 'success', message: 'Business logout' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }
+    
+    static async getMyBusiness(req, res) {
+        try {
+            const business = await Business.findOne({ _id:req._id, b_type:"main" });
+        
+            if (!business) {
+                return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+            }
+        
+            return res.status(200).json({ business });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }
+
+    static async getMySubBusiness(req, res){
+        
+        try {
+            const business_id = req._id;
+            const existingBusiness = await Business.findOne({ _id: business_id, b_type:"main" });
+            if (!existingBusiness) {
+                return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+            }
+
+            const mySubBusinessess = await SubBusiness.find({ business_id:business_id, b_type:"sub" }).select('-__v');
+            if (!mySubBusinessess) {
+                return res.status(400).json({ message: 'Sub-business not found.' });
+            }
+            
+    
+            return res.status(200).json({ mySubBusinessess });
+        } catch (error) {
+            
+            console.log(error)
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }
+
+    static async getBusiness(req, res) {
+        try {
+            const { business_id } = req.body;
+            const business = await Business.findOne({ _id:business_id, b_type:"main" });
+        
+            if (!business) {
+              return res.status(404).json({ message: 'Business not found' });
+            }
+        
+            return res.status(200).json({ status: 'success', data:{ business: business }  });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }
+
+    static async getSubBusiness(req, res){
+        
+        try {
+            const { business_id } = req.body;
+
+            const existingBusiness = await Business.findOne({ _id: business_id, b_type:"main" });
+            if (!existingBusiness) {
+                return res.status(400).json({ message: 'Business not found.' });
+            }
+
+            const existingSubBusinessess = await SubBusiness.find({ business_id:business_id, b_type:"sub" }).select('-__v');;
+            if (!existingSubBusinessess) {
+                return res.status(400).json({ message: 'Sub-business not found.' });
+            }
+            
+    
+            return res.status(200).json({ status: 'success', data:{ subBusinessess: existingSubBusinessess } });
+        } catch (error) {
+            
+            console.log(error)
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }
+
+    static async changeHasSub(req, res){
+        
+        try {
+            const { has_sub } = req.body;
+            const business_id = req._id;
+
+            const existingBusiness = await Business.findOne({ _id: business_id });
+            if (!existingBusiness) {
+                return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+            }
+            
+            existingBusiness.has_sub = has_sub ? true : false; 
+            await existingBusiness.save();
+    
+    
+            return res.status(200).json({ status: 'success' });
+        } catch (error) {
+            
+            console.log(error)
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }
+
+    static async addSubBusiness(req, res){
+        
+        try {
+            const { name, long_name, phone, content, working_days, working_hours } = req.body;
+            const business_id = req._id;
+
+            const existingBusiness = await Business.findOne({ _id: business_id });
+            if (!existingBusiness) {
+                return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+            }
+            else{
+                if(!existingBusiness.has_sub){
+                    return res.status(400).json({ message: 'Sub-businesses cannot be created.' });
+                }
+            }
+            const existingSubBusiness = await SubBusiness.findOne({ name:name, business_id:business_id, b_type:"sub" });
+            if (existingSubBusiness) {
+                return res.status(400).json({ message: 'Sub-business already exists' });
+            }
+    
+            const newSubBusiness = new SubBusiness({ 
+                business_id,
+                name, 
+                long_name, 
+                phone,
+                content, 
+                working_days,
+                working_hours,
+            });
+            await newSubBusiness.save();
+    
+    
+            return res.status(201).json({ status: 'success', data:{ subBusiness: newSubBusiness } });
+        } catch (error) {
+            
+            console.log(error)
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }
+
+    static async removeSubBusiness(req, res) {
+        try {
+            
+            const { id } = req.body;
+            const business_id = req._id;
+            
+            const existingBusiness = await Business.findOne({ _id: business_id });
+            if (!existingBusiness) {
+                return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+            }
+            else{
+                const existingSubBusiness = await SubBusiness.findOne({ _id: id, b_type:"sub" });
+                if (!existingSubBusiness) {
+                    return res.status(404).json({ message: 'Sub-business not found' });
+                }
+                if (existingSubBusiness.business_id != business_id) {
+                    return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+                }
+            }
+
+            
+            const result = await SubBusiness.deleteOne({ _id: id, business_id:business_id, b_type:"sub" });
+    
+            if (result.deletedCount === 1) {
+                return res.status(200).json({ status: 'success', message: 'Sub-business deleted' });
+            }
+            return res.status(404).json({ message: 'Sub-business not found' });
+            
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal server error' });
@@ -127,7 +288,6 @@ class BusinessController {
         }
     }
 
-    
     static async deleteAccount(req, res) {
         try {
             const result = await Business.deleteOne({ _id: req._id });
@@ -211,7 +371,6 @@ class BusinessController {
             res.status(500).json({ message: 'Internal server error' });
         }
     }
-
 
     static async addSpecialOffTime(req, res){
         

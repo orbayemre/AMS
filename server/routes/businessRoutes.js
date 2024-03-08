@@ -9,6 +9,12 @@ router.post('/register', businessRegisterValidation, BusinessController.createBu
 router.post('/login', businessLoginValidation, BusinessController.login);
 router.post('/logout', verifyToken, BusinessController.logout);
 router.get('/my-business', verifyToken, BusinessController.getMyBusiness);
+router.post('/get-business', BusinessController.getBusiness);
+router.get('/my-subbusiness', verifyToken, BusinessController.getMySubBusiness);
+router.post('/get-subbusiness', BusinessController.getSubBusiness);
+router.post('/change-hassub', verifyToken, BusinessController.changeHasSub);
+router.post('/add-subbusiness', verifyToken, BusinessController.addSubBusiness);
+router.post('/remove-subbusiness', verifyToken, BusinessController.removeSubBusiness);
 router.post('/update-account', verifyToken, businessUpdateValidation, BusinessController.updateAccount);
 router.post('/delete-account', verifyToken, BusinessController.deleteAccount);
 router.post('/forgot-password', BusinessController.forgotPassword);
