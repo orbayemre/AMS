@@ -149,7 +149,7 @@ class UserController {
             }
 
             const resetToken = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_FORGOT_TOKEN_EXPIRES_IN });
-            const resetLink = `http://localhost:3000/user/reset-password/${resetToken}`;
+            const resetLink = `http://localhost:8080/user/reset-password/${resetToken}`;
             // Burası ön taraftaki password reset sayfasının tokenlı linki olacak
 
             const mailOptions = {
