@@ -1,17 +1,38 @@
 import Home from "./pages/Home";
-
+import UserLogin from "./pages/UserLogin";
+import BusinessLogin from "./pages/BusinessLogin";
+import BusinessRegister from "./pages/BusinessRegister";
+import UserRegister from "./pages/UserRegister";
+import ResetPassword from "./pages/ResetPassword";
+import "./Translations";
 const Routes = [
   {
     index: true,
     element:<Home/>
   },
   {
-    path:'/login',
-    element: <div>Login</div>
+    path:'/user/login',
+    element: <UserLogin/>
   },
   {
-    path:'/register',
-    element: <div>Register</div>
+    path:'/business/login',
+    element: <BusinessLogin/>
+  },
+  {
+    path:'/user/register',
+    element: <UserRegister/>
+  },
+  {
+    path:'/business/register',
+    element: <BusinessRegister/>
+  },
+  {
+    path:'/user/reset-password/:token',
+    element: <ResetPassword/>
+  },
+  {
+    path:'/business/reset-password/:token',
+    element: <ResetPassword/>
   },
   {
     path:'*',

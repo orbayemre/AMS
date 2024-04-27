@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    --first: #1C4B82;
+    --second: #F9C784;
+    --third : #EBF2FA;
+}
+.disableSelect{
+    user-select: none;
+}
+
+html,body,*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    max-width: 1600px;
+    margin: auto;
+}

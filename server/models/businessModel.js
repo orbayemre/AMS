@@ -36,8 +36,8 @@ workingDaysSchema.pre('save', function(next) {
 const workingHoursSchema = new mongoose.Schema({
     start: { type: String , required: true},
     end: { type: String , required: true},
-    appointment_duration: { type: String , required: true},
-    break_time: { type: String , required: true},
+    appointment_duration: { type: String , default: "50"},
+    break_time: { type: String , default: "10"},
     lunch: { type: String , default: null},
 });
 
