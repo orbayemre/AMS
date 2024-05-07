@@ -1,0 +1,162 @@
+
+
+/* Business Detail */
+
+.calendar{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.weekControl{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 800px;
+    max-width: 1000px;
+    background-color: var(--first);
+    color: var(--third);
+    padding: 8px 15px;
+    border: 2px solid var(--third);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, var(--first) 0px 0px 0px 3px;
+}
+.weekControl .weeks{
+    font-size: 20px;
+    overflow: hidden;
+}
+.weekControl .weeks .week{
+    display: none;
+}
+.weekControl .weeks .week.active{
+    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: 0.5s showActive;
+}
+
+@keyframes showActive {
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.weekControl .controlButton{
+    cursor: pointer;
+    user-select: none;
+    font-size: 18px;
+    opacity: 0;
+}
+.weekControl .controlButton.active{
+    opacity: 1;
+}
+
+
+
+
+
+
+.weekCalendar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 800px;
+    max-width: 1500px;
+    margin-top: 30px;
+}
+.weekCalendar .weeks{
+    overflow: hidden;
+}
+.weekCalendar .weeks .week{
+    display: none;
+}
+.weekCalendar .weeks .week.active{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    gap: 10px;
+    animation: 0.5s showActive;
+}
+.weekCalendar .weeks .week .day{
+    width: 150px;
+    height: 600px;
+    border: 3px solid var(--first);
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    border-radius: 10px;
+    margin: 5px;
+    overflow: hidden;
+}
+.weekCalendar .weeks .week .day .dayHeader{
+    font-size: 17px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--first);
+    color: var(--third);
+    padding: 8px 15px;
+    border: 2px solid var(--third);
+    border-radius: 10px;
+}
+.weekCalendar .weeks .week .day .dayHeader .dayName{
+    font-size: 14px;
+}
+.weekCalendar .weeks .week .day .dayBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    color: var(--first);
+    font-weight: 600;
+    padding: 0px 13px;
+    height: 100%;
+    overflow: auto;
+}
+.weekCalendar .weeks .week .day .dayBody .event{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 10px;
+    margin: 6px 0px;
+    border-radius: 10px;
+}
+.weekCalendar .weeks .week .day .dayBody .event.full{
+    background-color: #afafaf;
+    color: white;
+}
+.weekCalendar .weeks .week .day .dayBody .event.open{
+    background-color: #4f772d;
+    color: white;
+}
+
+
+
+
+.weekCalendar .weeks .week .day.off{
+    border: 3px solid #afafaf;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
+.weekCalendar .weeks .week .day.off .dayHeader{
+    background-color: #afafaf;
+    color: white;
+}
+.weekCalendar .weeks .week .day.off .dayBody{
+    color: #afafaf;
+    font-size: 16px;
+}
+
+
+
+
+.Toastify__toast-container--bottom-center{
+    min-width: 500px;
+}

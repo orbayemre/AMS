@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
-import { setLogin }  from "../store/authStore";
-import { validate } from "email-validator";
+import { useSelector } from "react-redux";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -13,14 +11,11 @@ import MailInput from "../components/Inputs/MailInput";
 import PasswordInput from "../components/Inputs/PasswordInput";
 import '../styles/common.css';
 import '../styles/auth.css';
-import Lottie from "../components/Animations/Lottie";
-import ForgotPass from "../components/Modals/ForgotPass";
 
 export default function ResetPassword({params}){
 
     const {t} = useTranslation();
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const location = useLocation();
     const {token} = useParams();
 

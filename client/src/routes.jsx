@@ -1,9 +1,12 @@
 import Home from "./pages/Home";
-import UserLogin from "./pages/UserLogin";
-import BusinessLogin from "./pages/BusinessLogin";
-import BusinessRegister from "./pages/BusinessRegister";
-import UserRegister from "./pages/UserRegister";
+import UserLogin from "./pages/user/UserLogin";
+import BusinessLogin from "./pages/business/BusinessLogin";
+import BusinessRegister from "./pages/business/BusinessRegister";
+import UserRegister from "./pages/user/UserRegister";
 import ResetPassword from "./pages/ResetPassword";
+import BusinessDetail from "./pages/business/BusinessDetail";
+
+
 import "./Translations";
 const Routes = [
   {
@@ -33,6 +36,10 @@ const Routes = [
   {
     path:'/business/reset-password/:token',
     element: <ResetPassword/>
+  },
+  {
+    path:'/business/detail/:bId',
+    element: <BusinessDetail/>
   },
   {
     path:'*',

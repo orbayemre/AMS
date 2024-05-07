@@ -50,13 +50,6 @@
     "select district" : "İlçe seç",
     "street address" : "Açık Adres",
     "type street address of your business" : "İşletmenizin açık adresini girin",
-    "monday":"Pazartesi",
-    "tuesday":"Salı",
-    "wednesday":"Çarşamba",
-    "thursday":"Perşembe",
-    "friday":"Cuma",
-    "saturday":"Cumartesi",
-    "sunday":"Pazar",
     "choose your working days" : "Çalıştığınız günleri seçin",
     "choose your working time" : "Çalışma saatlerinizi seçin",
     "start":"Başlangıç",
@@ -76,6 +69,40 @@
     "Invalid token":"Geçersiz token",
     "Password reset successful":"Şifre sıfırlama başarılı bir şekilde gerçekleştirildi.",
     "Internal server error":"İç sunucu hatası",
-    "Business not found" : "İşletme bulunamadı."
+    "Business not found" : "İşletme bulunamadı.",
+
+    "Monday":"Pazartesi",
+    "Tuesday":"Salı",
+    "Wednesday":"Çarşamba",
+    "Thursday":"Perşembe",
+    "Friday":"Cuma",
+    "Saturday":"Cumartesi",
+    "Sunday":"Pazar",
+
+    "January": "Ocak",
+    "February": "Şubat",
+    "March": "Mart",
+    "April": "Nisan",
+    "May": "Mayıs ",
+    "June": "Haziran",
+    "July": "Temmuz",
+    "August": "Ağustos",
+    "September": "Eylül",
+    "October": "Ekim",
+    "November": "Kasım",
+    "December": "Aralık",
+
+    "next" : "Sonraki",
+    "previous" : "Önceki",
+
+    "Closed all day" : "Tüm gün kapalı",
+    "Full" : "Dolu",
+    "Open" : "Açık",
+    "Confirm appointment" : "Randevu Alımını Onayla",
+    "Do you approve of making an appointment on" : "[{day} {month} {dayWeek} {hour}] tarihinde randevu alınmasını onaylıyor musunuz?",
+    "Confirm" : "Onayla",
+    "Appointment created successfully" : "Randevunuz oluşturuldu. Randevularım sayfasından detayları görebilirsiniz."
+
+
 
 }

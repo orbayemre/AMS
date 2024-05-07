@@ -15,49 +15,49 @@ export default function DaysCheckboxButtons({title, days={},onChange}){
                 <div className="input-container">
                     <input id="monday" className="radio-button" type="checkbox" name="monday" value="monday" checked={days["monday"]}  onChange={() => onChange("monday")}/>
                     <div className="radio-tile" >
-                        <label htmlFor="monday" className="radio-tile-label font-josefin-700">{t('monday')}</label>
+                        <label htmlFor="monday" className="radio-tile-label font-josefin-700">{t('Monday')}</label>
                     </div>
                 </div>
 
                 <div className="input-container">
                     <input id="tuesday" className="radio-button" type="checkbox" name="tuesday" value="tuesday" checked={days["tuesday"]} onChange={() => onChange("tuesday")} />
                     <div className="radio-tile">
-                        <label htmlFor="tuesday" className="radio-tile-label  font-josefin-700">{t('tuesday')}</label>
+                        <label htmlFor="tuesday" className="radio-tile-label  font-josefin-700">{t('Tuesday')}</label>
                     </div>
                 </div>
 
                 <div className="input-container">
                     <input id="wednesday" className="radio-button" type="checkbox" name="wednesday" value="wednesday" checked={days["wednesday"]} onChange={() => onChange("wednesday")} />
                     <div className="radio-tile">
-                        <label htmlFor="wednesday" className="radio-tile-label font-josefin-700">{t('wednesday')}</label>
+                        <label htmlFor="wednesday" className="radio-tile-label font-josefin-700">{t('Wednesday')}</label>
                     </div>
                 </div>
 
                 <div className="input-container">
                     <input id="thursday" className="radio-button" type="checkbox" name="thursday" value="thursday" checked={days["thursday"]} onChange={() => onChange("thursday")} />
                     <div className="radio-tile">
-                        <label htmlFor="thursday" className="radio-tile-label font-josefin-700">{t('thursday')}</label>
+                        <label htmlFor="thursday" className="radio-tile-label font-josefin-700">{t('Thursday')}</label>
                     </div>
                 </div>
 
                 <div className="input-container">
                     <input id="friday" className="radio-button" type="checkbox" name="friday" value="friday" checked={days["friday"]} onChange={() => onChange("friday")} />
                     <div className="radio-tile">
-                        <label htmlFor="friday" className="radio-tile-label font-josefin-700">{t('friday')}</label>
+                        <label htmlFor="friday" className="radio-tile-label font-josefin-700">{t('Friday')}</label>
                     </div>
                 </div>
 
                 <div className="input-container">
                     <input id="saturday" className="radio-button" type="checkbox" name="saturday" value="saturday" checked={days["saturday"]} onChange={() => onChange("saturday")} />
                     <div className="radio-tile">
-                        <label htmlFor="saturday" className="radio-tile-label font-josefin-700">{t('saturday')}</label>
+                        <label htmlFor="saturday" className="radio-tile-label font-josefin-700">{t('Saturday')}</label>
                     </div>
                 </div>
 
                 <div className="input-container" >
                     <input id="sunday" className="radio-button" type="checkbox" name="sunday" value="sunday" checked={days["sunday"]} onChange={() => onChange("sunday")} />
                     <div className="radio-tile">
-                        <label htmlFor="sunday" className="radio-tile-label font-josefin-700">{t('sunday')}</label>
+                        <label htmlFor="sunday" className="radio-tile-label font-josefin-700">{t('Sunday')}</label>
                     </div>
                 </div>
             </div>
