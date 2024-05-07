@@ -107,5 +107,40 @@
     font-style: normal;
 }
 
+.fadeIn{
+    animation: 0.5s fadeIn;
+}
+.fadeIn-1{
+    animation: 1s fadeIn;
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.slideBottom{
+    animation: 0.5s fadeIn;
+    position: relative;
+}
+.slideBottom-1{
+    animation: 1s fadeIn;
+    position: relative;
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+        bottom: -50px;
+    }
+    to {
+        opacity: 1;
+        bottom: 0px;
+    }
+}
 
 

@@ -2,20 +2,20 @@ import { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { setLogin }  from "../store/authStore";
+import { setLogin }  from "../../store/authStore";
 import { validate } from "email-validator";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
-import Params from "../params"
-import MailInput from "../components/Inputs/MailInput";
-import PasswordInput from "../components/Inputs/PasswordInput";
-import '../styles/common.css';
-import '../styles/auth.css';
-import Lottie from "../components/Animations/Lottie";
-import NameInput from "../components/Inputs/NameInput";
-import PhoneInput from "../components/Inputs/PhoneInput";
+import Params from "../../params"
+import MailInput from "../../components/Inputs/MailInput";
+import PasswordInput from "../../components/Inputs/PasswordInput";
+import '../../styles/common.css';
+import '../../styles/auth.css';
+import Lottie from "../../components/Animations/Lottie";
+import NameInput from "../../components/Inputs/NameInput";
+import PhoneInput from "../../components/Inputs/PhoneInput";
 
 export default function UserRegister(){
 

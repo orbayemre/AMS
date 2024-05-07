@@ -55,13 +55,6 @@
     "select district" : "Select District",
     "street address" : "Street Address",
     "type street address of your business" : "Type street address of your business",
-    "monday":"Monday",
-    "tuesday":"Tuesday",
-    "wednesday":"Wednesday",
-    "thursday":"Thursday",
-    "friday":"Friday",
-    "saturday":"Saturday",
-    "sunday":"Sunday",
     "choose your working days" : "Choose your working days",
     "choose your working time" : "Choose your working time",
     "start":"Start",
@@ -81,7 +74,40 @@
     "Invalid token" : "Invalid token",
     "Password reset successful" : "Password reset successful",
     "Internal server error" : "Internal server error",
-    "Business not found" : "Business not found"
+    "Business not found" : "Business not found",
+
+
+    "Monday":"Monday",
+    "Tuesday":"Tuesday",
+    "Wednesday":"Wednesday",
+    "Thursday":"Thursday",
+    "Friday":"Friday",
+    "Saturday":"Saturday",
+    "Sunday":"Sunday",
+
+    "January": "January",
+    "February": "February",
+    "March": "March",
+    "April": "April",
+    "May": "May",
+    "June": "June",
+    "July": "July",
+    "August": "August",
+    "September": "September",
+    "October": "October",
+    "November": "November",
+    "December": "December",
+
+    "next" : "Next",
+    "previous" : "Previous",
+
+    "Closed all day" : "Closed all day",
+    "Full" : "Full",
+    "Open" : "Open",
+    "Confirm appointment" : "Confirm Appointment",
+    "Do you approve of making an appointment on" : "Do you approve of making an appointment on [{dayWeek}, {month} {day} at {hour}]?",
+    "Confirm" : "Confirm",
+    "Appointment created successfully" : "Your appointment has been scheduled. You can view the details on the My Appointments page."
 
 
 }
