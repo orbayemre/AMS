@@ -107,7 +107,26 @@
     "Confirm appointment" : "Confirm Appointment",
     "Do you approve of making an appointment on" : "Do you approve of making an appointment on [{dayWeek}, {month} {day} at {hour}]?",
     "Confirm" : "Confirm",
-    "Appointment created successfully" : "Your appointment has been scheduled. You can view the details on the My Appointments page."
+    "Appointment created successfully" : "Your appointment has been scheduled. You can view the details on the My Appointments page.",
+    "Appointments" : "Appointments",
+    "My Appointments" : "My Appointments",
+    "All" : "All",
+    "Approved" : "Approved",
+    "approved" : "Approved",
+    "Pending" : "Pending",
+    "Rejected" : "Rejected",
+    "rejected" : "Rejected",
+    "Past" : "Past",
+    "approve" : "Approve",
+    "reject" : "Reject",
+    "Appointment approved successfully" : "Appointment approved.",
+    "Appointment rejected successfully" : "Appointment rejected.",
+    "recent" : "Recent",
+    "ancient" : "Ancient",
+    "Order" : "Order",
+    "Manage Appointments" : "Manage Appointments",
+    "Business Information" : "Business Information",
+    "Calendar Settings" : "Calendar Settings"
 
 
 }

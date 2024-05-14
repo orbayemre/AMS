@@ -6,6 +6,7 @@ import axios from 'axios';
 import Params from "../../params"
 import Calendar from "../../components/Calendar";
 import '../../styles/business.css';
+import '../../styles/common.css';
 
 
 export default function BusinessDetail(){
@@ -109,9 +110,17 @@ export default function BusinessDetail(){
                     /> 
                 :
                     subs.map((sub) =>{
-                        <div>
-                            subs
-                        </div>
+                        return( 
+                            <div key={sub._id}>
+                                <Calendar
+                                    id = {sub._id}  
+                                    isSub = {true}
+                                    workDays = {sub.working_days.days}
+                                    workHours = {sub.working_hours}
+                                    offTimes = {sub.special_off_times}
+                                /> 
+                            </div>
+                        )
                     })
                 
             }

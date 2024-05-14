@@ -101,7 +101,26 @@
     "Confirm appointment" : "Randevu Alımını Onayla",
     "Do you approve of making an appointment on" : "[{day} {month} {dayWeek} {hour}] tarihinde randevu alınmasını onaylıyor musunuz?",
     "Confirm" : "Onayla",
-    "Appointment created successfully" : "Randevunuz oluşturuldu. Randevularım sayfasından detayları görebilirsiniz."
+    "Appointment created successfully" : "Randevunuz oluşturuldu. Randevularım sayfasından detayları görebilirsiniz.",
+    "Appointments" : "Randevular",
+    "My Appointments" : "Randevularım",
+    "All" : "Tümü",
+    "Approved" : "Onaylı",
+    "approved" : "Onaylandı",
+    "Pending" : "Beklemede",
+    "Rejected" : "Reddedilen",
+    "rejected" : "Reddedildi",
+    "Past" : "Geçmiş",
+    "approve" : "Onayla",
+    "reject" : "Red et",
+    "Appointment approved successfully" : "Randevu onaylandı.",
+    "Appointment rejected successfully" : "Randevu reddedildi.",
+    "recent" : "Yakın tarihe göre",
+    "ancient" : "Uzak tarihe göre",
+    "Order" : "Sırala",
+    "Manage Appointments" : "Randevuları Yönet",
+    "Business Information" : "İşletme Bilgileri",
+    "Calendar Settings" : "Takvim Ayarları"
 
 
 
