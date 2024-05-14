@@ -57,7 +57,12 @@ class AppointmentController {
                 status: "pending",
             });
 
-            await Popularity.updatePopularity(business_id,"forMake");
+            if(!is_sub){
+                await Popularity.updatePopularity(business_id,"forMake");
+            }else{
+                const subB = await SubBusiness.findOne({ _id:business_id, b_type:"sub" });
+                await Popularity.updatePopularity(subB.business_id,"forMake");
+            }
             await appointment.save();
             return res.status(201).json({ status: 'success', message: 'Appointment created successfully' });
 
@@ -85,6 +90,72 @@ class AppointmentController {
             }).sort({ 'start_time': 1 }).select('-createdAt -updatedAt -__v');
 
             return res.status(200).json({ status: 'success', data:{ appointments: appointments } });
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+    }    
+    
+    static async getAppointmentsByType(req, res) {
+        try {
+            const { id, start_date, type } = req.body;
+            const _id = req._id;
+
+            const startDate = new Date(start_date + 'Z');
+
+            const existingUser = await Business.findById(_id);
+            if (!existingUser) {
+                return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
+            }
+
+            if(type == "all"){
+
+                const appointments = await Appointment.find({
+                    business_id: id,
+                    'start_time': { $gte: startDate },
+                }).sort({ 'start_time': 1 }).select('-createdAt -updatedAt -__v');
+
+                return res.status(200).json({ status: 'success', appointments});
+            }
+            else if(type == "pending"){
+
+                const appointments = await Appointment.find({
+                    business_id: id,
+                    'start_time': { $gte: startDate },
+                    'status' : 'pending'
+                }).sort({ 'start_time': 1 }).select('-createdAt -updatedAt -__v');
+
+                return res.status(200).json({ status: 'success', appointments});
+            }
+            else if(type == "approved"){
+
+                const appointments = await Appointment.find({
+                    business_id: id,
+                    'start_time': { $gte: startDate },
+                    'status' : 'approved'
+                }).sort({ 'start_time': 1 }).select('-createdAt -updatedAt -__v');
+
+                return res.status(200).json({ status: 'success', appointments});
+            }
+            else if(type == "rejected"){
+
+                const appointments = await Appointment.find({
+                    business_id: id,
+                    'start_time': { $gte: startDate },
+                    'status' : 'rejected'
+                }).sort({ 'start_time': 1 }).select('-createdAt -updatedAt -__v');
+
+                return res.status(200).json({ status: 'success', appointments});
+            }
+            else if(type == "past"){
+
+                const appointments = await Appointment.find({
+                    business_id: id,
+                    'start_time': { $lte: startDate },
+                }).sort({ 'start_time': -1 }).select('-createdAt -updatedAt -__v');
+
+                return res.status(200).json({ status: 'success', appointments});
+            }
         } catch (error) {
             console.error(error);
             return res.status(500).json({ message: 'Internal server error' });

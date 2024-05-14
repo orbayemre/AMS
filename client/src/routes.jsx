@@ -5,6 +5,7 @@ import BusinessRegister from "./pages/business/BusinessRegister";
 import UserRegister from "./pages/user/UserRegister";
 import ResetPassword from "./pages/ResetPassword";
 import BusinessDetail from "./pages/business/BusinessDetail";
+import BusinessAccount from "./pages/business/BusinessAccount";
 
 
 import "./Translations";
@@ -40,6 +41,10 @@ const Routes = [
   {
     path:'/business/detail/:bId',
     element: <BusinessDetail/>
+  },
+  {
+    path:'/business/account',
+    element: <BusinessAccount/>
   },
   {
     path:'*',

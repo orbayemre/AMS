@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.post('/make', verifyToken, makeAppointmentValidation, AppointmentController.makeAppointment); //User
 router.post('/get-appointments', verifyToken, AppointmentController.getAppointmentsByDate); //All
+router.post('/get-appointments-bytype', verifyToken, AppointmentController.getAppointmentsByType); //Business
 router.get('/get-myappointments', verifyToken, AppointmentController.getMyAppointments); //User
 router.post('/close', verifyToken, closeAppointmentValidation, AppointmentController.closeAppointment); //Business
 router.post('/approve', verifyToken, AppointmentController.approveAppointment); //Business
