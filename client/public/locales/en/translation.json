@@ -126,7 +126,17 @@
     "Order" : "Order",
     "Manage Appointments" : "Manage Appointments",
     "Business Information" : "Business Information",
-    "Calendar Settings" : "Calendar Settings"
+    "Calendar Settings" : "Calendar Settings",
+    "Search for business" : "Search for business.",
+    "Services" : "Services",
+    "Working days" : "Working days",
+    "You must be logged in to view business detail pages." : "You must be logged in to view business detail pages.",
+    "Filters" : "Filters",
+    "Type" : "Type",
+    "City" : "City",
+    "District" : "District",
+    "Please select city first" : "Please select city first",
+    "Apply Filters" : "Apply Filters"
 
 
 }

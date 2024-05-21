@@ -46,7 +46,7 @@
     "auto-service" : "Oto Servis",
     "massage-center" : "Masaj Merkezi",
     "consultancy-service" : "Danışmanlık Hizmeti",
-    "select city" : "İl seç",
+    "select city" : "Şehir seç",
     "select district" : "İlçe seç",
     "street address" : "Açık Adres",
     "type street address of your business" : "İşletmenizin açık adresini girin",
@@ -120,7 +120,17 @@
     "Order" : "Sırala",
     "Manage Appointments" : "Randevuları Yönet",
     "Business Information" : "İşletme Bilgileri",
-    "Calendar Settings" : "Takvim Ayarları"
+    "Calendar Settings" : "Takvim Ayarları",
+    "Search for business" : "İşletme arayın.",
+    "Services" : "Hizmetler",
+    "Working days" : "Çalışma günleri",
+    "You must be logged in to view business detail pages." : "İşletme detay sayfalarını görebilmeniz için giriş yapmalısınız.",
+    "Filters" : "Filtreler",
+    "Type" : "İşletme Tipi",
+    "City" : "Şehir",
+    "District" : "İlçe",
+    "Please select city first" : "Lütfen önce şehir seçin",
+    "Apply Filters" : "Filtreleri Uygula"
 
 
 
