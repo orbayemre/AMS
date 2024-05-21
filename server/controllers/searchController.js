@@ -49,7 +49,7 @@ class SearchController {
 
         if(params.city && params.city !== ""){
             SearchController.city = params.city;
-            query.city = SearchController.city;
+            query['address.city'] = new RegExp(SearchController.city, 'i'); ;
         }
         else{
             SearchController.city = null;
@@ -57,7 +57,7 @@ class SearchController {
 
         if(params.district && params.district !== ""){
             SearchController.district = params.district;
-            query.district = SearchController.district;
+            query['address.district'] = new RegExp(SearchController.district, 'i'); ;
         }
         else{
             SearchController.district = null;
@@ -74,12 +74,10 @@ class SearchController {
         try {
             const params = await SearchController.setParamsObject(req.query);
             var businesses = null
-            if(SearchController.q){
-                businesses = await Business.find(params).sort({popularity:-1})
-                .skip((SearchController.page - 1) * SearchController.perPage)
-                .limit(SearchController.perPage)
-                .select('-password -createdAt -updatedAt -__v'); 
-            }
+            businesses = await Business.find(params).sort({popularity:-1})
+            .skip((SearchController.page - 1) * SearchController.perPage)
+            .limit(SearchController.perPage)
+            .select('-password -createdAt -updatedAt -__v'); 
 
             return res.status(200).json({ status: 'success', data:{ businesses: businesses } });
         } catch (error) {

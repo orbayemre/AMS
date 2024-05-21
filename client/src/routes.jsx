@@ -9,6 +9,7 @@ import BusinessAccount from "./pages/business/BusinessAccount";
 
 
 import "./Translations";
+import Search from "./pages/Search";
 const Routes = [
   {
     index: true,
@@ -45,6 +46,10 @@ const Routes = [
   {
     path:'/business/account',
     element: <BusinessAccount/>
+  },
+  {
+    path:'/search',
+    element: <Search/>
   },
   {
     path:'*',

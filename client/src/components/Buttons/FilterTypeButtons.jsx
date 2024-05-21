@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next"
-import '../../styles/auth.css';
+import '../../styles/search.css';
 import '../../styles/common.css';
 
-export default function TypeRadioButtons({title, value="",onChange}){
+export default function FilterTypeButtons({title, value="",onChange}){
  
     const {t} = useTranslation();
     return(

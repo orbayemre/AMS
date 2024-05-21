@@ -129,7 +129,7 @@ export default function WeekCalendar({id, activeWeek, weekLen, weeksData, appoin
                                                                     if( !(now > momentStartTime)){
                                                                         if(isFull){
                                                                             return(
-                                                                                <Full event={event} index={index}/>
+                                                                                <Full event={event} key={index} index={index}/>
                                                                             )
 
                                                                         }
@@ -137,6 +137,7 @@ export default function WeekCalendar({id, activeWeek, weekLen, weeksData, appoin
                                                                             return(
                                                                                 <Open 
                                                                                     index={index}
+                                                                                    key={index}
                                                                                     bId={id}
                                                                                     event={event} 
                                                                                     day={day} 
