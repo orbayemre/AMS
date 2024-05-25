@@ -9,55 +9,55 @@ export default function DaysCheckboxButtons({title, days={},onChange}){
     return(
         <div>
             <div className='radio-tile-head font-josefin-500'>
-                {title}:
+                {title}
             </div>
             <div className="radio-tile-group">
-                <div className="input-container">
-                    <input id="monday" className="radio-button" type="checkbox" name="monday" value="monday" checked={days["monday"]}  onChange={() => onChange("monday")}/>
-                    <div className="radio-tile" >
-                        <label htmlFor="monday" className="radio-tile-label font-josefin-700">{t('Monday')}</label>
+                <div className="input-container" onClick={() => onChange("monday")}>
+                    <input id="monday" className="radio-button" type="checkbox" name="monday" value="monday" checked={days["monday"]} readOnly/>
+                    <div className="radio-tile">
+                        <label className="radio-tile-label font-josefin-700">{t('Monday')}</label>
                     </div>
                 </div>
 
-                <div className="input-container">
-                    <input id="tuesday" className="radio-button" type="checkbox" name="tuesday" value="tuesday" checked={days["tuesday"]} onChange={() => onChange("tuesday")} />
+                <div className="input-container" onClick={() => onChange("tuesday")}>
+                    <input id="tuesday" className="radio-button" type="checkbox" name="tuesday" value="tuesday" checked={days["tuesday"]} readOnly/>
                     <div className="radio-tile">
-                        <label htmlFor="tuesday" className="radio-tile-label  font-josefin-700">{t('Tuesday')}</label>
+                        <label className="radio-tile-label  font-josefin-700">{t('Tuesday')}</label>
                     </div>
                 </div>
 
-                <div className="input-container">
-                    <input id="wednesday" className="radio-button" type="checkbox" name="wednesday" value="wednesday" checked={days["wednesday"]} onChange={() => onChange("wednesday")} />
+                <div className="input-container" onClick={() => onChange("wednesday")}>
+                    <input id="wednesday" className="radio-button" type="checkbox" name="wednesday" value="wednesday" checked={days["wednesday"]} readOnly/>
                     <div className="radio-tile">
-                        <label htmlFor="wednesday" className="radio-tile-label font-josefin-700">{t('Wednesday')}</label>
+                        <label className="radio-tile-label font-josefin-700">{t('Wednesday')}</label>
                     </div>
                 </div>
 
-                <div className="input-container">
-                    <input id="thursday" className="radio-button" type="checkbox" name="thursday" value="thursday" checked={days["thursday"]} onChange={() => onChange("thursday")} />
+                <div className="input-container" onClick={() => onChange("thursday")}>
+                    <input id="thursday" className="radio-button" type="checkbox" name="thursday" value="thursday" checked={days["thursday"]} readOnly/>
                     <div className="radio-tile">
-                        <label htmlFor="thursday" className="radio-tile-label font-josefin-700">{t('Thursday')}</label>
+                        <label className="radio-tile-label font-josefin-700">{t('Thursday')}</label>
                     </div>
                 </div>
 
-                <div className="input-container">
-                    <input id="friday" className="radio-button" type="checkbox" name="friday" value="friday" checked={days["friday"]} onChange={() => onChange("friday")} />
+                <div className="input-container" onClick={() => onChange("friday")}>
+                    <input id="friday" className="radio-button" type="checkbox" name="friday" value="friday" checked={days["friday"]} readOnly/>
                     <div className="radio-tile">
-                        <label htmlFor="friday" className="radio-tile-label font-josefin-700">{t('Friday')}</label>
+                        <label className="radio-tile-label font-josefin-700">{t('Friday')}</label>
                     </div>
                 </div>
 
-                <div className="input-container">
-                    <input id="saturday" className="radio-button" type="checkbox" name="saturday" value="saturday" checked={days["saturday"]} onChange={() => onChange("saturday")} />
+                <div className="input-container" onClick={() => onChange("saturday")}>
+                    <input id="saturday" className="radio-button" type="checkbox" name="saturday" value="saturday" checked={days["saturday"]} readOnly/>
                     <div className="radio-tile">
-                        <label htmlFor="saturday" className="radio-tile-label font-josefin-700">{t('Saturday')}</label>
+                        <label className="radio-tile-label font-josefin-700">{t('Saturday')}</label>
                     </div>
                 </div>
 
-                <div className="input-container" >
-                    <input id="sunday" className="radio-button" type="checkbox" name="sunday" value="sunday" checked={days["sunday"]} onChange={() => onChange("sunday")} />
+                <div className="input-container"  onClick={() => onChange("sunday")}>
+                    <input id="sunday" className="radio-button" type="checkbox" name="sunday" value="sunday" checked={days["sunday"]} readOnly/>
                     <div className="radio-tile">
-                        <label htmlFor="sunday" className="radio-tile-label font-josefin-700">{t('Sunday')}</label>
+                        <label className="radio-tile-label font-josefin-700">{t('Sunday')}</label>
                     </div>
                 </div>
             </div>

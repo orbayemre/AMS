@@ -606,10 +606,6 @@ video {
   margin: 1rem;
 }
 
-.m-20 {
-  margin: 5rem;
-}
-
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -620,10 +616,6 @@ video {
 
 .mt-2 {
   margin-top: 0.5rem;
-}
-
-.mt-20 {
-  margin-top: 5rem;
 }
 
 .mt-6 {
@@ -642,16 +634,8 @@ video {
   display: inline-flex;
 }
 
-.table {
-  display: table;
-}
-
 .h-14 {
   height: 3.5rem;
-}
-
-.h-3\/4 {
-  height: 75%;
 }
 
 .h-6 {
@@ -670,12 +654,12 @@ video {
   min-height: 100%;
 }
 
-.w-3\/4 {
-  width: 75%;
-}
-
 .w-6 {
   width: 1.5rem;
+}
+
+.w-96 {
+  width: 24rem;
 }
 
 .w-full {
@@ -797,6 +781,11 @@ video {
   line-height: 1.25rem;
 }
 
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -835,6 +824,10 @@ video {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .transition-all {

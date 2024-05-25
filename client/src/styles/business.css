@@ -241,14 +241,14 @@
 .accountContainer .sidebar .menu .menuItem.logout a:hover svg path{
     stroke: rgb(255, 47, 47);
 }
-.baSection{
+.accountSection{
     width: 100%;
     display: flex;
     flex-direction: column;
     margin: 50px 50px 50px 300px;
     animation: 0.5s showActive;
 }
-.baSection .baHeader h1{
+.baSection .baHeader h2{
     font-size: 34px;
     color: var(--first);
     padding: 20px 0px 10px 20px;
@@ -429,4 +429,371 @@
     width: 20px;
     height: 20px;
     fill: var(--first);
+}
+
+
+.csSection{
+    display: flex;
+}
+.csSection h2{
+    font-size: 34px;
+    color: var(--first);
+    padding: 20px 0px 10px 20px;
+    border: 3px solid var(--first);
+    border-radius: 10px;
+}
+.csSection .setting{
+    margin-left: 20px;
+    margin-top: 30px;
+}
+.csSection .setting .settingHeader{
+    display: inline-block;
+    color: var(--first);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding: 0px 20px 0px 0px;
+    border-bottom: 3px solid var(--first);
+}
+.csSection .setting .settingDesc{
+    color: var(--first);
+    font-size: 15px;
+}
+.csSection .setting .saveButtonCont{
+    height: 68px;
+}
+.csSection .setting .saveButtonCont .saveButton{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-color: #4f772d;
+    color: white;
+    border: 2px solid #4f772d;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: #50772d2c 0px 2px 8px 0px;
+}
+.csSection .setting .saveButtonCont .saveButton:hover{
+    background-color: white;
+    color: #4f772d;
+    box-shadow: #50772d4f 0px 2px 10px 0px;
+}
+
+
+.csSection .setting .radio-tile-head{
+    margin-top: 20px;
+    font-size: 17px;
+    color: var(--first);
+}
+.csSection .setting .radio-tile-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.csSection .setting .radio-tile-group .input-container {
+    position: relative;
+    height: 5rem;
+    width: 8rem;
+    margin: 0.5rem;
+    cursor: pointer;
+}
+.csSection .setting .radio-tile-group .input-container .radio-button {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+}
+.csSection .setting .radio-tile-group .input-container .radio-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--first);
+    border-radius: 5px;
+    padding: 1rem;
+    transition: transform 300ms ease;
+    cursor: pointer;
+}
+.csSection .setting .radio-tile-group .input-container .icon svg {
+    fill: var(--first);
+    width: 2rem;
+    height: 2rem;
+}
+.csSection .setting .radio-tile-group .input-container .radio-tile-label {
+    text-align: center;
+    font-size: 10px;
+    padding-top: 8px;
+    text-transform: uppercase;
+    color: var(--first);
+    cursor: pointer;
+}
+.csSection .setting .radio-tile-group .input-container .radio-button:checked + .radio-tile {
+    background-color: var(--first);
+    border: 2px solid var(--first);
+    color: white;
+    transform: scale(1.1, 1.1);
+}
+.csSection .setting .radio-tile-group .input-container .radio-button:checked + .radio-tile .icon svg {
+    fill: white;
+    background-color: var(--first);
+}
+.csSection .setting .radio-tile-group .input-container .radio-button:checked + .radio-tile .radio-tile-label {
+    color: white;
+    background-color: var(--first);
+}
+
+
+.csSection .workHoursSetting .body{
+    display: flex;
+    gap: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.csSection .workHoursSetting .pickTime{
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    color: var(--first);
+}
+.csSection .workHoursSetting .pickTime .timeCont{
+    display: flex;
+    width: 80px;
+    margin-left: 10px;
+    padding: 6px;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--first);
+    border-radius: 5px;
+
+}
+.csSection .workHoursSetting .pickTime .timeCont .pickHour{
+    width: 60px;
+    text-align: center;
+}
+.csSection .workHoursSetting .pickTime .timeCont .pickHour select{
+    outline: none;
+    appearance:none;
+}
+.csSection .workHoursSetting .pickTime .timeCont .pickMin{
+    width: 60px;
+    padding-left: 6px;
+    text-align: center;
+}
+.csSection .workHoursSetting .pickTime .timeCont .pickMin select{
+    outline: none;
+    appearance:none;
+}
+
+.csSection .appTimeSetting .body{
+    display: flex;
+    gap: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.csSection .appTimeSetting .body .duration input{
+    outline: none;
+    padding: 5px 0px 5px 10px ;
+    border: 2px solid var(--first);
+    color: var(--first);
+    width: 60px;
+    border-radius: 5px;
+}
+.csSection .appTimeSetting .body .duration label{
+    color: var(--first);
+    margin-right:10px;
+}
+
+.csSection .appTimeSetting .body .break input{
+    outline: none;
+    padding: 5px 0px 5px 10px ;
+    border: 2px solid var(--first);
+    color: var(--first);
+    width: 60px;
+    border-radius: 5px;
+}
+.csSection .appTimeSetting .body .break label{
+    color: var(--first);
+    margin-right: 10px;
+}
+.csSection .closeSetting .body{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.csSection .closeSetting .body input{
+    color: var(--first);
+    fill: var(--first);
+    padding: 5px 10px;
+    outline: none;
+    border: 2px solid var(--first);
+    border-radius: 5px;
+}
+
+
+.biSection{
+    display: flex;
+}
+
+.biSection h2{
+    font-size: 34px;
+    color: var(--first);
+    padding: 20px 0px 10px 20px;
+    border: 3px solid var(--first);
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.biSection .info{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.biSection .info .infoHeader{
+    display: inline-block;
+    color: var(--first);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding: 0px 20px 0px 0px;
+    border-bottom: 3px solid var(--first);
+}
+.biSection .info .infoDesc{
+    color: var(--first);
+    font-size: 15px;
+}
+.biSection .info .saveButtonCont{
+    height: 48px;
+}
+.biSection .info .saveButtonCont .saveButton{
+    display: inline-block;
+    font-size: 13px;
+    margin-top: 10px;
+    padding: 7px 30px;
+    border-radius: 10px;
+    background-color: #4f772d;
+    color: white;
+    border: 2px solid #4f772d;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: #50772d2c 0px 2px 8px 0px;
+}
+.biSection .info .saveButtonCont .saveButton:hover{
+    background-color: white;
+    color: #4f772d;
+    box-shadow: #50772d4f 0px 2px 10px 0px;
+}
+
+.biSection .info .infoField{
+    width: 40%;
+    color: var(--first);
+}
+
+.biSection .info .infoField textarea{
+    width: 200%;
+    min-height: 150px;
+    outline: none;
+    border: 2px solid var(--first);
+    padding: 20px;
+    border-radius: 10px ;
+    resize: none;
+}
+.biSection .info .infoField.passField{
+    margin-bottom: 15px;
+}
+.biSection .info .infoField label{
+    color: var(--first);
+}
+.biSection .info .infoField.addressField{
+    margin-bottom: 15px;
+}
+.biSection .info .infoField label{
+    color: var(--first);
+}
+.biSection .info .infoField .citySelect{
+    margin-bottom: 20px;
+}
+.biSection .info .infoField .districtSelect{
+    margin-bottom: 20px;
+}
+.biSection .servicesInfo .services{
+    width: 40%;
+}
+.biSection .servicesInfo .services .servicesList{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+.biSection .servicesInfo .services .servicesList .notFoundService{
+    color: var(--first);
+}
+.biSection .servicesInfo .services .servicesList .service{
+    padding: 10px 20px; 
+    background-color: var(--first);
+    color: var(--third);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.biSection .servicesInfo .services .servicesList .service .serviceText{
+    text-align: center;
+}
+.biSection .servicesInfo .services .servicesList .service .remove{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.biSection .servicesInfo .services .servicesList .service .remove svg{
+    fill: var(--third);
+    width: 18px;
+
+}
+
+.biSection .servicesInfo .services .serviceAdd .addServiceInput{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+.biSection .servicesInfo .services .serviceAdd .addServiceInput input{
+    outline:none;
+    border: 2px solid var(--first);
+    border-radius: 7px;
+    color: var(--first);
+    padding: 5px 10px;
+}
+.biSection .servicesInfo .services .serviceAdd .addServiceInput div{
+    display: flex;
+    gap: 10px;
+}
+.biSection .servicesInfo .services .serviceAdd .addServiceInput div span{
+    width: 50%;
+    text-align: center;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    background-color: var(--first);
+    border-radius: 7px;
+    color: var(--third);
+    cursor: pointer;
+
+}
+.biSection .servicesInfo .services .serviceAdd .showAddInput{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 50px;
+    border: 2px solid var(--first);
+    border-radius: 10px;
+    color: var(--first);
+    cursor: pointer;
+    margin-bottom: 20px;
 }

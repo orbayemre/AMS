@@ -139,9 +139,9 @@ export default function BusinessAppointmentsSection({id,isSub}){
     },[order])
 
     return(
-        <div className="baSection font-josefin-500">
+        <div className="baSection accountSection font-josefin-500">
             <div className="baHeader">
-                <h1> {t('Appointments')} </h1>
+                <h2> {t('Manage Appointments')} </h2>
             </div>
             <div className="baBody">
                 <div className="control">

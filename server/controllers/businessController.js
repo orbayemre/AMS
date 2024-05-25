@@ -6,6 +6,7 @@ const nodemailer = require('nodemailer');
 const Business = require('../models/businessModel');
 const {SubBusiness} = require('../models/businessModel');
 const Popularity =  require('../services/popularity');
+const { type } = require('os');
 
 
 class BusinessController {
@@ -127,7 +128,17 @@ class BusinessController {
             const business = await Business.findOne({ _id:business_id, b_type:"main" });
         
             if (!business) {
-              return res.status(404).json({ message: 'Business not found' });
+
+                const existingSubBusinessess = await SubBusiness.findOne({ _id:business_id, b_type:"sub" }).select('-__v');;
+                if (!existingSubBusinessess) {
+                    return res.status(404).json({ message: 'Business not found' });
+                }
+                else{
+                    const baseBusiness = await Business.findOne({ _id:existingSubBusinessess.business_id, b_type:"main" });
+                    return res.status(200).json({ status: 'success', type:"sub", data:{ business: baseBusiness, subDetail : existingSubBusinessess }  });
+                }
+                
+                
             }
         
             return res.status(200).json({ status: 'success', data:{ business: business }  });
@@ -275,6 +286,7 @@ class BusinessController {
             if(profile_image) { business.profile_image = profile_image; }
             if(images) { business.images = images; }
             if(content) { business.content = content; }
+            if(address) { business.address = address; }
             if(services) { business.services = services; }
             if(images) { business.images = images; }
             if(working_days) { business.working_days = working_days; }

@@ -86,6 +86,7 @@ class AppointmentController {
 
             const appointments = await Appointment.find({
                 business_id: business_id,
+                'status': { $in: ['pending', 'approved'] },
                 'start_time': { $gte: startDate, $lte: endDate },
             }).sort({ 'start_time': 1 }).select('-createdAt -updatedAt -__v');
 
@@ -166,17 +167,31 @@ class AppointmentController {
     static async getMyAppointments(req, res) {
         try {
             const user_id = req._id;
-            
+            const { type,startDate } = req.query;
+
             const existingUser = await User.findById(user_id);
             if (!existingUser) {
                 return res.status(403).json({ status: "Unauthorized", message: 'Unauthorized action' });
             }
+            
+            if(type == 'past'){
 
-            const appointments = await Appointment.find({
-                user_id: user_id,
-            }).sort({ 'start_time': -1 }).select('-createdAt -updatedAt -__v');
+                const appointments = await Appointment.find({
+                    user_id: user_id,
+                    'start_time': { $lte: startDate },
+                }).sort({ 'start_time': -1 }).limit(50).select('-createdAt -updatedAt -__v');
+    
+                return res.status(200).json({ status: 'success', data:{ appointments: appointments } });
+            }
+            else{
+                const appointments = await Appointment.find({
+                    user_id: user_id,
+                    'start_time': { $gte: startDate },
+                }).sort({ 'start_time': 1 }).limit(50).select('-createdAt -updatedAt -__v');
+    
+                return res.status(200).json({ status: 'success', data:{ appointments: appointments } });
 
-            return res.status(200).json({ status: 'success', data:{ appointments: appointments } });
+            }
         } catch (error) {
             console.error(error);
             return res.status(500).json({ message: 'Internal server error' });

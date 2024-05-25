@@ -14,22 +14,21 @@ export default function WeekControl({activeWeek = 1, weekLen = 4, onNext, onPrev
         const data = [];
 
         for (let i = 0; i < weekLen; i++) {
-            const start = new Date();
-            const end = new Date();
 
-            start.setDate(start.getDate() + (i * 7));
-            if(i != 0) { start.setHours(0, 0, 0, 0); }
-            end.setDate(start.getDate() + 6);
-            end.setHours(23, 59, 59, 0);
-            
-            const momentStart = moment(start);
-            const momentEnd = moment(end);
+            var momentStart = moment(new Date());
+            momentStart.add((i * 7), 'days')
+            if(i != 0) {momentStart.startOf('day'); }
+
+            var momentEnd = moment(momentStart);
+            momentEnd.add(6, 'days')
+            momentEnd.endOf('day');
+
             data.push({
-                startData: start,
+                startData: momentStart.toDate(),
                 startDay: momentStart.format('DD'),
                 startMonth: momentStart.format('MMMM'),
 
-                endData: end,
+                endData: momentEnd.toDate(),
                 endDay: momentEnd.format('DD'),
                 endMonth: momentEnd.format('MMMM'),
             });

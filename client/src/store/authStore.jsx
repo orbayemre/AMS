@@ -18,6 +18,8 @@ export const authData = createSlice({
         setLogout: (state) => {
             Cookies.remove('AMS_token');
             Cookies.remove('user_type');
+            Cookies.remove('menuSelected');
+            Cookies.remove('menuCollapsed');
             
             state.isLogin = false;
             state.accessToken = "";

@@ -14,7 +14,7 @@ import PasswordInput from "../../components/Inputs/PasswordInput";
 import '../../styles/common.css';
 import '../../styles/auth.css';
 import Lottie from "../../components/Animations/Lottie";
-import NameInput from "../../components/Inputs/NameInput";
+import BusinessNameInput from "../../components/Inputs/BusinessNameInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
 import TypeRadioButtons from "../../components/Buttons/TypeRadioButtons";
 import AddressSelection from "../../components/Inputs/AddressSelection";
@@ -157,19 +157,6 @@ export default function BusinessRegister(){
             setValidationMessage(t("working time required"));
         }
         else{
-            console.log({
-                name,
-                long_name:longName,
-                phone,
-                email,
-                password,
-                type,
-                address:{city:city, district:district, address_text:streetAddress},
-                working_days: {monday,tuesday,wednesday,thursday,friday,saturday,sunday},
-                working_hours: {start:startTime, end:endTime}
-            })
-
-
             setValidationMessage(null);
             axios.post(Params.api+"/api/business/register",{
                 name,
@@ -232,10 +219,10 @@ export default function BusinessRegister(){
                 
                 <div className="formBody">
                     <div className="formField">
-                        <NameInput value={name} placeholder={t('company name')+"*"} onChange={handleName} autoFocus={true} theme={2}/>
+                        <BusinessNameInput value={name} placeholder={t('company name')+"*"} onChange={handleName} autoFocus={true} theme={2}/>
                     </div>
                     <div className="formField">
-                        <NameInput value={longName} placeholder={t('long name')} onChange={handleLongName} theme={2}/>
+                        <BusinessNameInput value={longName} placeholder={t('long name')} onChange={handleLongName} theme={2}/>
                     </div>
                     <div className="formField">
                         <MailInput value={email} placeholder={t('email')+"*"} onChange={handleEmail} theme={2}/>
@@ -267,7 +254,7 @@ export default function BusinessRegister(){
                         <span className="head">{t('choose your working time')+"*"}:</span>
                         <div className="body">
                             <TimePicker title={t("start")} hour={startTime.split(":")[0]} minute={startTime.split(":")[1]} onChange={handleStartTime}/>
-                            <TimePicker title={t("end")} hour={endTime.split(":")[0]} minute={endTime.split(":")[1]} onChange={handleStartTime}/>
+                            <TimePicker title={t("end")} hour={endTime.split(":")[0]} minute={endTime.split(":")[1]} onChange={handleEndTime}/>
                         </div>
                     </div>
 

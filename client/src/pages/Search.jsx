@@ -212,10 +212,6 @@ export default function Search(){
         return(
             <div className="container searchContainer">
 
-                <div className="searchInputCont">
-                    <SearchInput value={q ? q : ""} placeholder={t('Search for business')} onChange={handleQ} submit={handleSubmit}/>
-                </div>
-
                 <div className="searchBody">
                     <div className="filters font-josefin-500">
                         <h3>{t('Filters')}</h3>
@@ -251,6 +247,9 @@ export default function Search(){
                         </div>
                     </div>
                     <div className="resultsBody font-josefin-500">
+                        <div className="searchInputCont">
+                            <SearchInput value={q ? q : ""} placeholder={t('Search for business')} onChange={handleQ} submit={handleSubmit}/>
+                        </div>
                         
                         {searchResults?.length !== 0  && !scrollLoading && 
                             <InfiniteScroll

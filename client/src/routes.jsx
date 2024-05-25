@@ -6,6 +6,7 @@ import UserRegister from "./pages/user/UserRegister";
 import ResetPassword from "./pages/ResetPassword";
 import BusinessDetail from "./pages/business/BusinessDetail";
 import BusinessAccount from "./pages/business/BusinessAccount";
+import MyAppointments from "./pages/user/MyAppointments";
 
 
 import "./Translations";
@@ -50,6 +51,10 @@ const Routes = [
   {
     path:'/search',
     element: <Search/>
+  },
+  {
+    path:'/user/my-appointments',
+    element: <MyAppointments/>
   },
   {
     path:'*',
