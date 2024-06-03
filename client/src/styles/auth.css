@@ -1,0 +1,1105 @@
+
+/* User Login  */
+.userLoginContainer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+}
+.userLoginBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--first);
+    min-width: 500px;
+    min-height: 500px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.041);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.userLoginBox .header{
+    font-size: 32px;
+    color: var(--third);
+    margin-top: 80px;
+}
+.userLoginBox .formBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 65%;
+    padding-top: 20px;
+
+}
+.userLoginBox .formBody .formField{
+    margin: 5px 0px;
+    width: 100%;
+}
+.userLoginBox .formBody .forgotPass{
+    font-size: 14px;
+    color: var(--third);
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    text-decoration: solid;
+}
+.userLoginBox .formBody .submitButton{
+    margin-top: 10px;
+    padding: 6px 0px;
+    width: 100%;
+    background-color: var(--third);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--first);
+    font-size: 18px;
+    border: 1px solid var(--first);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.userLoginBox .formBody .submitButton:hover{
+    
+    background-color: var(--first);
+    color: var(--third);
+    border: 1px solid var(--third);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.userLoginBox .formBody .needAccount{
+    color: var(--third);
+    font-size: 16px;
+    margin-top: 10px;
+}
+.userLoginBox .formBody .validationMessage{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 14;
+    color: rgb(255, 105, 105);
+}
+
+
+.businessLoginInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 400px;
+    height: 500px;
+}
+.businessLoginInfo .body{
+    width: 80%;
+    font-size: 22px;
+    color: var(--first);
+}
+.businessLoginInfo .body a{
+    font-weight: 700;
+}
+
+
+@media screen and (max-width: 1000px){
+    .userLoginBox{
+        min-width: 450px;
+    }
+    .businessLoginInfo{
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .userLoginContainer{
+        flex-direction: column;
+        justify-content: center;
+        padding: 50px 0px;
+    }
+    .businessLoginInfo{
+        flex-direction: row;
+        align-items: center;
+        width: 450px;
+        height: 250px;
+        gap: 40px;
+
+    }
+    .userLoginBox .formBody{
+        width: 75%;
+    
+    }
+}
+@media screen and (max-width: 450px){
+    .userLoginBox{
+        min-width: 95vw;
+        margin-top: 100px;
+    }
+    .userLoginBox .formBody{
+        width: 85%;
+    
+    }
+    .businessLoginInfo{
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        padding-top: 100px;
+        padding-bottom: 80px;
+        gap: 0px;
+
+    }
+}
+@media screen and (max-width: 350px){
+    .userLoginBox{
+        min-width: 98vw;
+    }
+    .userLoginBox .formBody{
+        width: 85%;
+    
+    }
+    .businessLoginInfo{
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        margin-top: 30px;
+        padding-bottom: 80px;
+        gap: 0px;
+
+    }
+}
+
+
+/* Business Login  */
+.businessLoginContainer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+}
+
+.businessLoginBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 500px;
+    min-height: 500px;
+    border-radius: 10px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+.businessLoginBox .header{
+    font-size: 32px;
+    color: var(--first);
+    margin-top: 80px;
+}
+.businessLoginBox .formBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 65%;
+    padding-top: 20px;
+
+}
+.businessLoginBox .formBody .formField{
+    margin: 5px 0px;
+    width: 100%;
+}
+
+.businessLoginBox .formBody .forgotPass{
+    font-size: 14px;
+    color: var(--first);
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    text-decoration: solid;
+}
+.businessLoginBox .formBody .submitButton{
+    margin-top: 10px;
+    padding: 6px 0px;
+    width: 100%;
+    background-color: var(--first);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--third);
+    font-size: 18px;
+    border: 2px solid var(--first);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.businessLoginBox .formBody .submitButton:hover{
+    
+    background-color: var(--third);
+    color: var(--first);
+    border: 2px solid var(--first);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.businessLoginBox .formBody .needAccount{
+    color: var(--first);
+    font-size: 16px;
+    margin-top: 10px;
+}
+.businessLoginBox .formBody .validationMessage{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 14;
+    color: rgb(255, 105, 105);
+}
+
+.userLoginInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 400px;
+    height: 500px;
+}
+.userLoginInfo .body{
+    width: 80%;
+    font-size: 22px;
+    color: var(--first);
+}
+.userLoginInfo .body a{
+    font-weight: 700;
+}
+
+@media screen and (max-width: 1000px){
+    .businessLoginContainer{
+        flex-direction: column-reverse;
+        justify-content: center;
+        padding: 50px 0px;
+        height: auto;
+    }
+    .businessLoginBox{
+        min-width: 450px;
+    }
+    .userLoginInfo{
+        flex-direction: row;
+        align-items: center;
+        width: 70vw;
+        height: 250px;
+        gap: 40px;
+        padding-top: 100px;
+
+    }
+}
+
+@media screen and (max-width: 800px){
+    .businessLoginContainer{
+        flex-direction: column-reverse;
+        justify-content: center;
+        padding: 100px 0px;
+        height: auto;
+    }
+    .userLoginInfo{
+        flex-direction: row;
+        align-items: center;
+        width: 90vw;
+        height: 250px;
+        gap: 40px;
+
+    }
+    .businessLoginBox .formBody{
+        width: 75%;
+    
+    }
+}
+@media screen and (max-width: 600px){
+    .businessLoginContainer{
+        height: auto;
+    }
+    .businessLoginBox{
+        min-width: 95vw;
+    }
+    .businessLoginBox .formBody{
+        width: 85%;
+    
+    }
+    .userLoginInfo{
+        flex-direction: column;
+        justify-content: center;
+        width: 90vw;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        gap: 0px;
+    }
+}
+@media screen and (max-width: 350px){
+    .businessLoginContainer{
+        height: auto;
+    }
+    .businessLoginBox{
+        min-width: 98vw;
+    }
+    .businessLoginBox .formBody{
+        width: 85%;
+    
+    }
+    .userLoginInfo{
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        margin-top: 30px;
+        padding-bottom: 80px;
+        gap: 0px;
+
+    }
+}
+
+
+
+
+
+/* User Register  */
+.userRegisterContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.userRegisterBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--first);
+    min-width: 700px;
+    max-width: 900px;
+    min-height: 500px;
+    padding-bottom: 80px;
+    border-radius: 10px;
+    margin-top: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.041);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.userRegisterBox .header{
+    font-size: 32px;
+    color: var(--third);
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userRegisterBox .formBody{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 80%;
+    padding-top: 20px;
+
+}
+.userRegisterBox .formBody .formField{
+    margin: 5px 20px;
+    width: 40%;
+}
+.userRegisterBox .formBody .formEnd{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 13px;
+}
+.userRegisterBox .formBody .submitButton{
+    margin-top: 5px;
+    padding: 6px 0px;
+    width: 100%;
+    background-color: var(--third);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--first);
+    font-size: 18px;
+    border: 1px solid var(--first);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.userRegisterBox .formBody .submitButton:hover{
+    
+    background-color: var(--first);
+    color: var(--third);
+    border: 1px solid var(--third);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.userRegisterBox .formBody .validationMessage{
+    min-width: 40%;
+    min-height: 24px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 14;
+    color: rgb(255, 105, 105);
+}
+.userRegisterBox .formBody .alreadyAccount{
+    color: var(--third);
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 800px){
+    .userRegisterBox{
+        width: 95vw;
+        min-width: 95vw;
+    }
+}
+@media screen and (max-width: 750px){
+    
+    .userRegisterBox .formBody{
+        width: 100%;
+    
+    }
+}
+@media screen and (max-width: 600px){
+    .userRegisterBox{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .userRegisterBox .formBody{
+        width: 100%;
+    
+    }
+    .userRegisterBox .formBody .formField{
+        width: 100%;
+    
+    }
+    .userRegisterBox .formBody .formEnd{
+        width: 80%;
+    
+    }
+}
+
+
+
+
+/* Business Register  */
+.businessRegisterContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+.businessRegisterBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 700px;
+    max-width: 900px;
+    min-height: 500px;
+    padding-bottom: 80px;
+    border-radius: 10px;
+    margin-top: 100px;
+    border-radius: 10px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+.businessRegisterBox .header{
+    font-size: 32px;
+    color: var(--first);
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.businessRegisterBox .formBody{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 80%;
+    padding-top: 20px;
+
+}
+.businessRegisterBox .formBody .formField{
+    margin: 5px 20px;
+    width: 44%;
+}
+.businessRegisterBox .formBody .formField.formFieldTypeRadio{
+    width: auto;
+    margin-left: 22px;
+}
+.businessRegisterBox .formBody .formField.formFieldTypeRadio{
+    width: 100%;
+    margin-left: 22px;
+}
+
+.businessRegisterBox .formBody .formField .address-selection{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    color: var(--first);
+}
+.businessRegisterBox .formBody .formField .address-selection .citySelect{
+    width: 45%;
+}
+.businessRegisterBox .formBody .formField .address-selection .districtSelect{
+    width: 45%;
+    
+}
+.businessRegisterBox .formBody .formField .address-selection input{
+    border: none;
+    outline: none;
+    caret-color: transparent;
+    cursor: pointer;
+}
+.businessRegisterBox .formBody .formField .address-selection .stdropdown-item.selected{
+    background-color: var(--first);
+}
+.businessRegisterBox .formBody .formField .address-selection .stdropdown-tool svg{
+    fill: var(--first);
+}
+.businessRegisterBox .formBody .formField .address-selection .stdropdown-menu{
+    max-height: 200px;
+}
+
+.businessRegisterBox .formBody .formField.streetAddressCont{
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+}
+.businessRegisterBox .formBody .formField.streetAddressCont .head{
+    color: var(--first);
+    margin-bottom: 5px;
+}
+.businessRegisterBox .formBody .formField.streetAddressCont .streetAddress{
+    width: 95%;
+    min-height: 100px;
+    font-size: 16px;
+    border: 1.5px solid var(--first);
+    border-radius: 10px;
+    outline-color: var(--first);
+    padding: 10px 20px;
+    resize: none;
+    color: var(--first);
+
+}
+
+
+.businessRegisterBox .formBody .formField.daysCheckboxCont{
+    margin: 0px;
+    width: 100%;
+}
+
+.businessRegisterBox .formBody .formField.timePickerCont{
+    margin-left: 20px;
+    width: 100%;
+}
+
+.businessRegisterBox .formBody .formEnd{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 13px;
+}
+.businessRegisterBox .formBody .submitButton{
+    margin-top: 5px;
+    padding: 6px 0px;
+    width: 100%;
+    background-color: var(--first);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--third);
+    font-size: 18px;
+    border: 1px solid var(--third);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.businessRegisterBox .formBody .submitButton:hover{
+    
+    background-color: var(--third);
+    color: var(--first);
+    border: 1px solid var(--first);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.businessRegisterBox .formBody .validationMessage{
+    min-width: 40%;
+    min-height: 24px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 14;
+    color: rgb(255, 105, 105);
+}
+.businessRegisterBox .formBody .alreadyAccount{
+    color: var(--first);
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 800px){
+    .businessRegisterBox{
+        width: 95vw;
+        min-width: 95vw;
+    }
+}
+@media screen and (max-width: 750px){
+    
+    .businessRegisterBox .formBody{
+        width: 100%;
+    
+    }
+}
+@media screen and (max-width: 600px){
+    .businessRegisterBox{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .businessRegisterBox .formBody{
+        width: 100%;
+    
+    }
+    .businessRegisterBox .formBody .formField{
+        width: 100%;
+    
+    }
+    .businessRegisterBox .formBody .formEnd{
+        width: 80%;
+    
+    }
+}
+
+/* Reset Password */
+
+.resetPasswordContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.resetPasswordBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--first);
+    min-width: 500px;
+    min-height: 500px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.041);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.resetPasswordBox .header{
+    font-size: 32px;
+    color: var(--third);
+    margin-top: 80px;
+}
+.resetPasswordBox .resetMessage{
+    color: var(--third);
+    font-size: 14px;
+    width: 65%;
+    text-align: center;
+}
+.resetPasswordBox .formBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 65%;
+    padding-top: 20px;
+
+}
+.resetPasswordBox .formBody .formField{
+    margin: 5px 0px;
+    width: 100%;
+}
+.resetPasswordBox .formBody .forgotPass{
+    font-size: 14px;
+    color: var(--third);
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    text-decoration: solid;
+}
+.resetPasswordBox .formBody .submitButton{
+    margin-top: 10px;
+    padding: 6px 0px;
+    width: 100%;
+    background-color: var(--third);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--first);
+    font-size: 18px;
+    border: 1px solid var(--first);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.resetPasswordBox .formBody .submitButton:hover{
+    
+    background-color: var(--first);
+    color: var(--third);
+    border: 1px solid var(--third);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.resetPasswordBox .formBody .needAccount{
+    color: var(--third);
+    font-size: 16px;
+    margin-top: 10px;
+}
+.resetPasswordBox .formBody .validationMessage{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 14;
+    color: rgb(255, 105, 105);
+}
+
+
+
+
+
+
+.mailInput-theme1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--third);
+}
+.mailInput-theme1 .iconBox{
+    fill: var(--third);
+    padding-right: 10px;
+}
+.mailInput-theme1 .iconBox .icon{
+    width: 24px;
+    height: 24px;
+}
+.mailInput-theme1 .formInput{
+    padding: 8px;
+    border-left: 1px solid var(--third);
+    color: var(--third);
+    caret-color: var(--third);
+    border-top-right-radius: 6px ;
+    border-bottom-right-radius: 6px ;
+    outline-width: 0px;
+    background-color: transparent;
+    font-size: 16px;
+    width: 100%;
+}
+
+.mailInput-theme2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: 2px solid var(--first);
+}
+.mailInput-theme2 .iconBox{
+    fill: var(--first);
+    padding-right: 10px;
+}
+.mailInput-theme2 .iconBox .icon{
+    width: 24px;
+    height: 24px;
+}
+.mailInput-theme2 .formInput{
+    padding: 8px;
+    border-left: 2px solid var(--first);
+    color: var(--first);
+    caret-color: var(--first);
+    border-top-right-radius: 6px ;
+    border-bottom-right-radius: 6px ;
+    outline-width: 0px;
+    background-color: transparent;
+    font-size: 16px;
+    width: 100%;
+}
+.mailInput-theme1 .formPhoneInput{
+    border:none;
+    border-left: 1px solid var(--third);
+    caret-color: var(--third);
+    border-top-right-radius: 6px ;
+    border-bottom-right-radius: 6px ;
+    outline-width: 0px;
+    --react-international-phone-selected-dropdown-item-background-color: var(--first);
+    --react-international-phone-country-selector-background-color-hover: var(--first);
+    --react-international-phone-text-color: var(--third);
+    --react-international-phone-border-color: var(--first);
+    --react-international-phone-background-color:var(--first);
+    font-size: 16px;
+    width: 100%;
+    padding-left: 5px;
+}
+.mailInput-theme2 .formPhoneInput{
+    border-left: 2px solid var(--first);
+    caret-color: var(--first);
+    border-top-right-radius: 6px ;
+    border-bottom-right-radius: 6px ;
+    outline-width: 0px;
+    --react-international-phone-selected-dropdown-item-background-color: var(--third);
+    --react-international-phone-country-selector-background-color-hover: var(--third);
+    --react-international-phone-text-color: var(--first);
+    --react-international-phone-border-color: rgba(0, 0, 0, 0);
+    --react-international-phone-background-color:rgba(0, 0, 0, 0);
+    --react-international-phone-dropdown-item-background-color:var(--third);
+    font-size: 16px;
+    width: 100%;
+    padding-left: 5px;
+}
+
+
+.passwordInput-theme1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--third);
+}
+.passwordInput-theme1 .iconBox{
+    fill: var(--third);
+    padding-right: 10px;
+}
+.passwordInput-theme1 .iconBox .icon{
+    width: 24px;
+    height: 24px;
+}
+.passwordInput-theme1 .formInput{
+    padding: 8px;
+    border-left: 1px solid var(--third);
+    color: var(--third);
+    caret-color: var(--third);
+    border-top-right-radius: 6px ;
+    border-bottom-right-radius: 6px ;
+    outline-width: 0px;
+    background-color: transparent;
+    font-size: 16px;
+    width: 100%;
+}
+.passwordInput-theme1 .formInput::-moz-placeholder{
+    color: var(--third);
+}
+.passwordInput-theme1 .passwordEye{
+    margin-right: 10px;
+}
+
+.passwordInput-theme2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: 2px solid var(--first);
+}
+.passwordInput-theme2 .iconBox{
+    fill: var(--first);
+    padding-right: 10px;
+}
+.passwordInput-theme2 .iconBox .icon{
+    width: 24px;
+    height: 24px;
+}
+.passwordInput-theme2 .formInput{
+    padding: 8px;
+    border-left: 2px solid var(--first);
+    color: var(--first);
+    caret-color: var(--first);
+    border-top-right-radius: 6px ;
+    border-bottom-right-radius: 6px ;
+    outline-width: 0px;
+    background-color: transparent;
+    font-size: 16px;
+    width: 100%;
+}
+.passwordInput-theme2 .formInput::-moz-placeholder{
+    color: var(--first);
+}
+.passwordInput-theme2 .passwordEye{
+    margin-right: 10px;
+}
+
+
+.formFieldTypeRadio .radio-tile-head{
+    margin-top: 20px;
+    font-size: 17px;
+    color: var(--first);
+}
+.formFieldTypeRadio .radio-tile-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.formFieldTypeRadio .radio-tile-group .input-container {
+    position: relative;
+    height: 5rem;
+    width: 8rem;
+    margin: 0.5rem;
+}
+.formFieldTypeRadio .radio-tile-group .input-container .radio-button {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+}
+.formFieldTypeRadio .radio-tile-group .input-container .radio-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--first);
+    border-radius: 5px;
+    padding: 1rem;
+    transition: transform 300ms ease;
+}
+.formFieldTypeRadio .radio-tile-group .input-container .icon svg {
+    fill: var(--first);
+    width: 2rem;
+    height: 2rem;
+}
+.formFieldTypeRadio .radio-tile-group .input-container .radio-tile-label {
+    text-align: center;
+    font-size: 10px;
+    padding-top: 8px;
+    text-transform: uppercase;
+    color: var(--first);
+}
+.formFieldTypeRadio .radio-tile-group .input-container .radio-button:checked + .radio-tile {
+    background-color: var(--first);
+    border: 2px solid var(--first);
+    color: white;
+    transform: scale(1.1, 1.1);
+}
+.formFieldTypeRadio .radio-tile-group .input-container .radio-button:checked + .radio-tile .icon svg {
+    fill: white;
+    background-color: var(--first);
+}
+.formFieldTypeRadio .radio-tile-group .input-container .radio-button:checked + .radio-tile .radio-tile-label {
+    color: white;
+    background-color: var(--first);
+}
+
+
+
+
+.daysCheckboxCont .radio-tile-head{
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 17px;
+    color: var(--first);
+}
+.daysCheckboxCont .radio-tile-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.daysCheckboxCont .radio-tile-group .input-container {
+    position: relative;
+    height: 3rem;
+    width: 8rem;
+    margin: 0.5rem;
+}
+.daysCheckboxCont .radio-tile-group .input-container .radio-button {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+}
+.daysCheckboxCont .radio-tile-group .input-container .radio-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--first);
+    border-radius: 5px;
+    transition: transform 300ms ease;
+}
+.daysCheckboxCont .radio-tile-group .input-container .icon svg {
+    fill: var(--first);
+    width: 2rem;
+    height: 2rem;
+}
+.daysCheckboxCont .radio-tile-group .input-container .radio-tile-label {
+    text-align: center;
+    font-size: 10px;
+    width: 100%;
+    padding: 10px 0px;
+    text-transform: uppercase;
+    color: var(--first);
+}
+.daysCheckboxCont .radio-tile-group .input-container .radio-button:checked + .radio-tile {
+    background-color: var(--first);
+    border: 2px solid var(--first);
+    color: white;
+    transform: scale(1.1, 1.1);
+}
+.daysCheckboxCont .radio-tile-group .input-container .radio-button:checked + .radio-tile .icon svg {
+    fill: white;
+    background-color: var(--first);
+}
+.daysCheckboxCont .radio-tile-group .input-container .radio-button:checked + .radio-tile .radio-tile-label {
+    color: white;
+}
+
+.timePickerCont {
+    display: flex;
+    flex-direction: column;
+    width: 100%;    
+}
+.timePickerCont .head{
+    font-size: 17px;
+    color: var(--first);
+    margin-bottom: 10px;
+}
+.timePickerCont .body{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-left: 30px;
+    width: 100%;
+}
+.timePickerCont .pickTime{
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    color: var(--first);
+}
+.timePickerCont .pickTime .timeCont{
+    display: flex;
+    width: 80px;
+    margin-left: 10px;
+    padding: 6px;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--first);
+    border-radius: 5px;
+
+}
+.timePickerCont .pickTime .timeCont .pickHour{
+    width: 60px;
+    text-align: center;
+}
+.timePickerCont .pickTime .timeCont .pickHour select{
+    outline: none;
+    appearance:none;
+}
+.timePickerCont .pickTime .timeCont .pickMin{
+    width: 60px;
+    padding-left: 6px;
+    text-align: center;
+}
+.timePickerCont .pickTime .timeCont .pickMin select{
+    outline: none;
+    appearance:none;
+}

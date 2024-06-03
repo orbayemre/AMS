@@ -1,0 +1,1241 @@
+
+
+/* Business Detail */
+
+.calendar{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.weekControl{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 800px;
+    max-width: 1000px;
+    background-color: var(--first);
+    color: var(--third);
+    padding: 8px 15px;
+    border: 2px solid var(--third);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, var(--first) 0px 0px 0px 3px;
+}
+.weekControl .weeks{
+    font-size: 20px;
+    overflow: hidden;
+}
+.weekControl .weeks .week{
+    display: none;
+}
+.weekControl .weeks .week.active{
+    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: 0.5s showActive;
+}
+
+@keyframes showActive {
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.weekControl .controlButton{
+    cursor: pointer;
+    user-select: none;
+    font-size: 18px;
+    opacity: 0;
+}
+.weekControl .controlButton.active{
+    opacity: 1;
+}
+
+
+
+
+
+
+.weekCalendar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 800px;
+    max-width: 1500px;
+    margin-top: 30px;
+}
+.weekCalendar .weeks{
+    overflow: hidden;
+}
+.weekCalendar .weeks .week{
+    display: none;
+}
+.weekCalendar .weeks .week.active{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    gap: 10px;
+    animation: 0.5s showActive;
+}
+.weekCalendar .weeks .week .day{
+    width: 150px;
+    height: 600px;
+    border: 3px solid var(--first);
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    border-radius: 10px;
+    margin: 5px;
+    overflow: hidden;
+}
+.weekCalendar .weeks .week .day .dayHeader{
+    font-size: 17px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--first);
+    color: var(--third);
+    padding: 8px 15px;
+    border: 2px solid var(--third);
+    border-radius: 10px;
+}
+.weekCalendar .weeks .week .day .dayHeader .dayName{
+    font-size: 14px;
+}
+.weekCalendar .weeks .week .day .dayBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    color: var(--first);
+    font-weight: 600;
+    padding: 0px 13px;
+    height: 100%;
+    overflow: auto;
+}
+.weekCalendar .weeks .week .day .dayBody .event{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 10px;
+    margin: 6px 0px;
+    border-radius: 10px;
+}
+.weekCalendar .weeks .week .day .dayBody .event.full{
+    background-color: #afafaf;
+    color: white;
+}
+.weekCalendar .weeks .week .day .dayBody .event.open{
+    background-color: #4f772d;
+    color: white;
+}
+
+
+
+
+.weekCalendar .weeks .week .day.off{
+    border: 3px solid #afafaf;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
+.weekCalendar .weeks .week .day.off .dayHeader{
+    background-color: #afafaf;
+    color: white;
+}
+.weekCalendar .weeks .week .day.off .dayBody{
+    color: #afafaf;
+    font-size: 16px;
+}
+
+.Toastify__toast-container--bottom-center{
+    min-width: 500px;
+}
+
+
+
+/* Business Account */
+.accountContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    margin: 0;
+}
+.accountContainer .sidebar{
+    position: fixed;
+    height: 100vh;
+    background-color: var(--first);
+    color: var(--third);
+    border: none;
+    width: 300px;
+}
+.accountContainer .sidebar .hamburger{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    padding-right: 15px;
+}
+.accountContainer .sidebar .menu{
+    margin-top: 100px;
+}
+.accountContainer .sidebar .ps-sidebar-container{
+    background-color: var(--first);
+}
+.accountContainer .sidebar .menu .menuItem{
+    font-size: 18px;
+}
+
+.accountContainer .sidebar .menu .menuItem a span{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+.accountContainer .sidebar .menu .menuItem a span svg{
+    display: flex;
+    fill: white;
+    min-width: 34px;
+    min-height: 30px;
+    max-width: 34px;
+    max-height: 30px;
+}
+.ps-menu-icon svg{
+    display: flex;
+    fill: white;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+}
+.accountContainer .sidebar .menu .menuItem a{
+    transition: 0.2s;
+}
+.accountContainer .sidebar .menu .menuItem a:hover{
+    background-color: var(--first);
+    color: var(--third);
+}
+.accountContainer .sidebar .menu .menuItem a.ps-active{
+    background-color: white;
+    color: var(--first);
+}
+.accountContainer .sidebar .menu .menuItem a.ps-active svg{
+    fill: var(--first);
+}
+.accountContainer .sidebar .menu .ps-submenu-content .ps-menu-button{
+    transition: 0.2s;
+    background-color: var(--first);
+}
+.accountContainer .sidebar .menu .ps-submenu-content .ps-menu-button.ps-active{
+    background-color: white;
+    color: var(--first);
+}
+.ps-submenu-content{
+    border: 2px solid var(--first);
+    border-radius: 10px !important;
+    background-color: var(--first) !important;
+}
+
+.accountContainer .sidebar .menu .menuItem.logout{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.accountContainer .sidebar .menu .menuItem.logout svg{
+    fill: var(--first);
+    color: var(--third);
+}
+.accountContainer .sidebar .menu .menuItem.logout svg path{
+    stroke: #EBF2FA;
+    transition: 0.2s;
+}
+.accountContainer .sidebar .menu .menuItem.logout a:hover{
+    color: rgb(255, 47, 47);
+}
+.accountContainer .sidebar .menu .menuItem.logout a:hover svg path{
+    stroke: rgb(255, 47, 47);
+}
+.accountSection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 50px 50px 50px 350px;
+    animation: 0.5s showActive;
+}
+.baSection .baHeader h2{
+    font-size: 34px;
+    color: var(--first);
+    padding: 20px 0px 10px 20px;
+    border: 3px solid var(--first);
+    border-radius: 10px;
+}
+.baSection .baBody{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-left: 30px;
+    width: auto;
+}
+.baSection .baBody .control .controlTabs{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.baSection .baBody .control .controlTabs .tabItem{
+    font-size: 20px;
+    padding: 0px 20px 0px 20px;
+    color: #afafaf;
+    line-height: 1.2;
+    border-bottom:1px solid #afafaf;
+    cursor: pointer;
+    min-width: 140px;
+    text-align: center;
+}
+.baSection .baBody .control .controlTabs .tabItem.active{
+    color: var(--first);
+    font-weight: 600;
+    border-bottom:3px solid var(--first);
+}
+.baSection .baBody .control{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.baSection .baBody .control .controlOrder{
+    margin-bottom: 20px;
+}
+.baSection .baBody .control .controlOrder .order{
+    font-size: 16px;
+    color: var(--first);
+    padding: 10px 15px 10px 10px;
+    border:none;
+    border:2px solid var(--first);
+    border-radius: 5px;
+    outline:none;
+}
+
+.appointmentCard{
+    display: flex;
+    flex-direction: column;
+    border : 2px solid var(--first);
+    box-shadow:  #1C4B82 0px 0px 10px, white 0px 0px 0px 2px, var(--first) 0px 0px 0px 4px;
+    border-radius: 10px;
+    max-width: 700px;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    color: var(--first);
+}
+.appointmentCard .cardHead{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: start;
+}
+.appointmentCard .cardHead .date{
+    display: flex;
+    font-size: 22px;
+    font-weight: 700;
+    gap: 5px;
+}
+.appointmentCard .cardHead .hour{
+    display: flex;
+    font-size: 16px;
+    font-weight: 600;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.appointmentCard .cardBody{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+}
+.appointmentCard .cardBody .user{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.appointmentCard .cardBody .user div{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+}
+.appointmentCard .cardBody .user div span{
+    padding-top: 3px;
+}
+.appointmentCard .cardBody .user div svg{
+    width: 24px;
+    height: 24px;
+    fill: var(--first);
+}
+.appointmentCard .cardBody .status{
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+.appointmentCard .cardBody .status .approved{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.appointmentCard .cardBody .status .approved svg{
+    width: 18px;
+    height: 18px;
+    fill: var(--first);
+}
+.appointmentCard .cardBody .status .pending{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.appointmentCard .cardBody .status .pending .head{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.appointmentCard .cardBody .status .pending .head svg{
+    width: 28px;
+    height: 28px;
+    fill: var(--first);
+
+}
+.appointmentCard .cardBody .status .pending .manage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+.appointmentCard .cardBody .status .pending .manage .approve{
+    padding: 5px 20px;
+    background-color: #4f772d;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.appointmentCard .cardBody .status .pending .manage .reject{
+    padding: 5px 20px;
+    background-color: #ff2c2c;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.appointmentCard .cardBody .status .rejected{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.appointmentCard .cardBody .status .rejected svg{
+    width: 20px;
+    height: 20px;
+    fill: var(--first);
+}
+
+
+.csSection{
+    display: flex;
+}
+.csSection h2{
+    font-size: 34px;
+    color: var(--first);
+    padding: 20px 0px 10px 20px;
+    border: 3px solid var(--first);
+    border-radius: 10px;
+}
+.csSection .setting{
+    margin-left: 20px;
+    margin-top: 30px;
+}
+.csSection .setting .settingHeader{
+    display: inline-block;
+    color: var(--first);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding: 0px 20px 0px 0px;
+    border-bottom: 3px solid var(--first);
+}
+.csSection .setting .settingDesc{
+    color: var(--first);
+    font-size: 15px;
+}
+.csSection .setting .saveButtonCont{
+    height: 68px;
+}
+.csSection .setting .saveButtonCont .saveButton{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-color: #4f772d;
+    color: white;
+    border: 2px solid #4f772d;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: #50772d2c 0px 2px 8px 0px;
+}
+.csSection .setting .saveButtonCont .saveButton:hover{
+    background-color: white;
+    color: #4f772d;
+    box-shadow: #50772d4f 0px 2px 10px 0px;
+}
+
+
+.csSection .setting .radio-tile-head{
+    margin-top: 20px;
+    font-size: 17px;
+    color: var(--first);
+}
+.csSection .setting .radio-tile-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.csSection .setting .radio-tile-group .input-container {
+    position: relative;
+    height: 5rem;
+    width: 8rem;
+    margin: 0.5rem;
+    cursor: pointer;
+}
+.csSection .setting .radio-tile-group .input-container .radio-button {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+}
+.csSection .setting .radio-tile-group .input-container .radio-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--first);
+    border-radius: 5px;
+    padding: 1rem;
+    transition: transform 300ms ease;
+    cursor: pointer;
+}
+.csSection .setting .radio-tile-group .input-container .icon svg {
+    fill: var(--first);
+    width: 2rem;
+    height: 2rem;
+}
+.csSection .setting .radio-tile-group .input-container .radio-tile-label {
+    text-align: center;
+    font-size: 10px;
+    padding-top: 8px;
+    text-transform: uppercase;
+    color: var(--first);
+    cursor: pointer;
+}
+.csSection .setting .radio-tile-group .input-container .radio-button:checked + .radio-tile {
+    background-color: var(--first);
+    border: 2px solid var(--first);
+    color: white;
+    transform: scale(1.1, 1.1);
+}
+.csSection .setting .radio-tile-group .input-container .radio-button:checked + .radio-tile .icon svg {
+    fill: white;
+    background-color: var(--first);
+}
+.csSection .setting .radio-tile-group .input-container .radio-button:checked + .radio-tile .radio-tile-label {
+    color: white;
+    background-color: var(--first);
+}
+
+
+.csSection .workHoursSetting .body{
+    display: flex;
+    gap: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.csSection .workHoursSetting .pickTime{
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    color: var(--first);
+}
+.csSection .workHoursSetting .pickTime .timeCont{
+    display: flex;
+    width: 80px;
+    margin-left: 10px;
+    padding: 6px;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--first);
+    border-radius: 5px;
+
+}
+.csSection .workHoursSetting .pickTime .timeCont .pickHour{
+    width: 60px;
+    text-align: center;
+}
+.csSection .workHoursSetting .pickTime .timeCont .pickHour select{
+    outline: none;
+    appearance:none;
+}
+.csSection .workHoursSetting .pickTime .timeCont .pickMin{
+    width: 60px;
+    padding-left: 6px;
+    text-align: center;
+}
+.csSection .workHoursSetting .pickTime .timeCont .pickMin select{
+    outline: none;
+    appearance:none;
+}
+
+.csSection .appTimeSetting .body{
+    display: flex;
+    gap: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.csSection .appTimeSetting .body .duration input{
+    outline: none;
+    padding: 5px 0px 5px 10px ;
+    border: 2px solid var(--first);
+    color: var(--first);
+    width: 60px;
+    border-radius: 5px;
+}
+.csSection .appTimeSetting .body .duration label{
+    color: var(--first);
+    margin-right:10px;
+}
+
+.csSection .appTimeSetting .body .break input{
+    outline: none;
+    padding: 5px 0px 5px 10px ;
+    border: 2px solid var(--first);
+    color: var(--first);
+    width: 60px;
+    border-radius: 5px;
+}
+.csSection .appTimeSetting .body .break label{
+    color: var(--first);
+    margin-right: 10px;
+}
+.csSection .closeSetting .body{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.csSection .closeSetting .body input{
+    color: var(--first);
+    fill: var(--first);
+    padding: 5px 10px;
+    outline: none;
+    border: 2px solid var(--first);
+    border-radius: 5px;
+}
+
+
+.biSection{
+    display: flex;
+}
+
+.biSection h2{
+    font-size: 34px;
+    color: var(--first);
+    padding: 20px 0px 10px 20px;
+    border: 3px solid var(--first);
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.biSection .info{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.biSection .info .infoHeader{
+    display: inline-block;
+    color: var(--first);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding: 0px 20px 0px 0px;
+    border-bottom: 3px solid var(--first);
+}
+.biSection .info .infoDesc{
+    color: var(--first);
+    font-size: 15px;
+}
+.biSection .info .saveButtonCont{
+    height: 48px;
+}
+.biSection .info .saveButtonCont .saveButton{
+    display: inline-block;
+    font-size: 13px;
+    margin-top: 10px;
+    padding: 7px 30px;
+    border-radius: 10px;
+    background-color: #4f772d;
+    color: white;
+    border: 2px solid #4f772d;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: #50772d2c 0px 2px 8px 0px;
+}
+.biSection .info .saveButtonCont .saveButton:hover{
+    background-color: white;
+    color: #4f772d;
+    box-shadow: #50772d4f 0px 2px 10px 0px;
+}
+
+.biSection .info .infoField{
+    width: 40%;
+    color: var(--first);
+}
+
+.biSection .info .infoField textarea{
+    width: 200%;
+    min-height: 150px;
+    outline: none;
+    border: 2px solid var(--first);
+    padding: 20px;
+    border-radius: 10px ;
+    resize: none;
+}
+.biSection .info .infoField.passField{
+    margin-bottom: 15px;
+}
+.biSection .info .infoField label{
+    color: var(--first);
+}
+.biSection .info .infoField.addressField{
+    margin-bottom: 15px;
+}
+.biSection .info .infoField label{
+    color: var(--first);
+}
+.biSection .info .infoField .citySelect{
+    margin-bottom: 20px;
+}
+.biSection .info .infoField .districtSelect{
+    margin-bottom: 20px;
+}
+.biSection .servicesInfo .services{
+    width: 40%;
+}
+.biSection .servicesInfo .services .servicesList{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+.biSection .servicesInfo .services .servicesList .notFoundService{
+    color: var(--first);
+}
+.biSection .servicesInfo .services .servicesList .service{
+    padding: 10px 20px; 
+    background-color: var(--first);
+    color: var(--third);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.biSection .servicesInfo .services .servicesList .service .serviceText{
+    text-align: center;
+}
+.biSection .servicesInfo .services .servicesList .service .remove{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.biSection .servicesInfo .services .servicesList .service .remove svg{
+    fill: var(--third);
+    width: 18px;
+
+}
+
+.biSection .servicesInfo .services .serviceAdd .addServiceInput{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+.biSection .servicesInfo .services .serviceAdd .addServiceInput input{
+    outline:none;
+    border: 2px solid var(--first);
+    border-radius: 7px;
+    color: var(--first);
+    padding: 5px 10px;
+}
+.biSection .servicesInfo .services .serviceAdd .addServiceInput div{
+    display: flex;
+    gap: 10px;
+}
+.biSection .servicesInfo .services .serviceAdd .addServiceInput div span{
+    width: 50%;
+    text-align: center;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    background-color: var(--first);
+    border-radius: 7px;
+    color: var(--third);
+    cursor: pointer;
+
+}
+.biSection .servicesInfo .services .serviceAdd .showAddInput{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 50px;
+    border: 2px solid var(--first);
+    border-radius: 10px;
+    color: var(--first);
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+
+
+
+.bimgSection h2{
+    font-size: 34px;
+    color: var(--first);
+    padding: 20px 0px 10px 20px;
+    border: 3px solid var(--first);
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+.bimgSection .addImage{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.bimgSection .addImage input{
+    margin-top: 50px;
+    width: 500px;
+
+}
+.bimgSection .addImage input[type="file"] {
+    display: none;
+}
+  
+.bimgSection .addImage .custom-file-upload {
+    border: 2px solid var(--first);
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: var(--first);
+    margin-top: 50px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+.bimgSection .addImage .custom-file-upload:hover{
+    background-color: var(--first);
+    color: white;
+}
+.bimgSection .addImage .load{
+    padding: 8px 20px;
+    background-color: #4f772d;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.bimgSection .addImage .uploadImage{
+    max-width: 400px;
+    margin-top: 10px;
+}
+
+.gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.gallery__item img {
+    width: 100%;
+}
+
+.lg-toolbar  .deleteButton{
+    color: var(--third);
+    position: absolute;
+    right: 10%;
+    top: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 10px;
+    background-color: #ff4747;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+
+.msSection{
+    display: flex;
+}
+.msSection h2{
+    font-size: 34px;
+    color: var(--first);
+    padding: 20px 0px 10px 20px;
+    border: 3px solid var(--first);
+    border-radius: 10px;
+}
+
+.msSection .switchButton span{
+    font-family: "Josefin Sans", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 26px;
+    color: var(--first);
+}
+.msSection .subSwitch{
+    width: 80%;
+    margin-top: 50px;
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.msSection .subSwitch .subSwitchDesc{
+    font-size: 16px;
+    color: var(--first);
+}   
+
+.msSection .subSwitch .saveChanges{
+    max-width: 200px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    margin-top: 20px;
+    padding: 7px 30px;
+    border-radius: 10px;
+    background-color: #4f772d;
+    color: white;
+    border: 2px solid #4f772d;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: #50772d2c 0px 2px 8px 0px;
+}
+.msSection .subSwitch .saveChanges:hover{
+    background-color: white;
+    color: #4f772d;
+    box-shadow: #50772d4f 0px 2px 10px 0px;
+}
+
+.msSection .subsBox{
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50px;
+
+}
+.msSection .subsBox .subsHeader{
+    font-size: 26px;
+    color: var(--first);
+    font-weight: 600;
+}
+.msSection .subsBox .notFoundSubs{
+    font-size: 20px;
+    color: #ababab;
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+}
+.msSection .subsBox .subCard{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px 20px 20px;
+    border: 2px solid var(--first);
+    border-radius: 20px;
+    font-size: 18px;
+    color: var(--first);
+    box-shadow: #2d53773f 0px 2px 10px 0px;
+    margin: 15px 0px;
+}
+.msSection .subsBox .subCard .remove{
+    cursor: pointer;
+}
+.msSection .subsBox .subCard .remove svg{
+    width: 40px;
+    height: 40px;
+    fill: transparent;
+}
+.msSection .subsBox .subCard .remove svg path{
+    stroke: #ff4747;
+}
+
+
+
+.msSection .addSub{
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50px;
+
+}
+.msSection .addSub .addSubHeader{
+    font-size: 26px;
+    color: var(--first);
+    font-weight: 600;
+}
+
+
+
+.msSection .addSub .formBody{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 20px;
+
+}
+.msSection .addSub .formBody .formField{
+    margin: 5px 20px;
+    width: 100%;
+}
+.msSection .addSub .formBody .formField.formFieldTypeRadio{
+    width: auto;
+    margin-left: 22px;
+}
+.msSection .addSub .formBody .formField.formFieldTypeRadio{
+    width: 100%;
+    margin-left: 22px;
+}
+
+.msSection .addSub .formBody .formField .address-selection input{
+    border: none;
+    outline: none;
+    caret-color: transparent;
+    cursor: pointer;
+}
+.msSection .addSub .formBody .formField .address-selection .stdropdown-item.selected{
+    background-color: var(--first);
+}
+.msSection .addSub .formBody .formField .address-selection .stdropdown-tool svg{
+    fill: var(--first);
+}
+.msSection .addSub .formBody .formField .address-selection .stdropdown-menu{
+    max-height: 200px;
+}
+
+.msSection .addSub .formBody .formField.contentField{
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+}
+.msSection .addSub .formBody .formField.contentField .head{
+    color: var(--first);
+    margin-bottom: 5px;
+}
+.msSection .addSub .formBody .formField.contentField .content{
+    width: 95%;
+    min-height: 100px;
+    font-size: 16px;
+    border: 1.5px solid var(--first);
+    border-radius: 10px;
+    outline-color: var(--first);
+    padding: 10px 20px;
+    resize: none;
+    color: var(--first);
+
+}
+
+
+.msSection .addSub  .formBody .formField.daysCheckboxCont{
+    margin: 0px;
+    width: 100%;
+}
+
+.msSection .addSub .formBody .formField.timePickerCont{
+    margin-left: 20px;
+    width: 100%;
+}
+
+.msSection .addSub .formBody .formEnd{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 13px;
+}
+.msSection .addSub .formBody .submitButton{
+    margin-top: 5px;
+    margin: 5px auto;
+    padding: 6px 0px;
+    width: 50%;
+    background-color: var(--first);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--third);
+    font-size: 18px;
+    border: 1px solid var(--third);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.msSection .addSub .formBody .submitButton:hover{
+    
+    background-color: var(--third);
+    color: var(--first);
+    border: 1px solid var(--first);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.msSection .addSub .formBody .validationMessage{
+    min-width: 40%;
+    min-height: 24px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 14;
+    color: rgb(255, 105, 105);
+}
+
+
+.detailContainer{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 20px auto 50px;
+}
+.detailContainer .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 20px auto 0px;
+}
+.detailContainer .header .names{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+.detailContainer .header .names .name{
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--first);
+}
+.detailContainer .header .names .longName{
+    font-size: 15px;
+}
+.detailContainer .header .type{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.detailContainer .header .type svg{
+    width: 64px;
+    height: 64px;
+    fill: var(--first);
+}
+.detailContainer .header .type span{
+    color: var(--first);
+    font-weight: 600;
+}
+.detailContainer .infoHeader{
+    font-size: 26px;
+    margin: 20px 0px 0px 0px;
+    color: var(--first);
+
+}
+.detailContainer .infoHeader.calendarHeader{
+    margin-top: 60px;
+}
+.detailContainer .businessContent .desc{
+    font-size: 16px;
+    text-align: justify;
+    padding-left: 10px;
+}
+.detailContainer .businessServices .services{
+    list-style: outside;
+    display: flex;
+    gap: 30px;
+    padding-left: 30px;
+}
+.detailContainer .businessServices .services .service{
+    font-size: 17px;
+}
+.detailContainer .businessAddressContact .addressContact{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.detailContainer .businessAddressContact .addressContact .address{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    max-width: 400px;
+    margin-right: 150px;
+}
+.detailContainer .businessAddressContact .addressContact .address .cityDistrict{
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--first);
+}
+.detailContainer .businessAddressContact .addressContact .address .street{
+    font-size: 14px;
+}
+.detailContainer .businessAddressContact .addressContact .contact{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.detailContainer .businessAddressContact .addressContact .contact .contactItem{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+.detailContainer .businessAddressContact .addressContact .contact .contactItem svg{
+    width: 32px;
+}
+.detailContainer .businessAddressContact .addressContact .contact .contactItem.phone svg{
+    transform: rotate(90deg);
+}
+.detailContainer .businessAddressContact .addressContact .contact .contactItem svg path{
+    stroke: var(--first);
+}

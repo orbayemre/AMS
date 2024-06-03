@@ -1,0 +1,300 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap');
+
+
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lightgallery.css');
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lg-zoom.css');
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lg-video.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=M+PLUS+Rounded+1c&display=swap');
+.jersey-10-regular {
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.font-m-plus-100{
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.font-m-plus-300{
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.font-m-plus-400{
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.font-m-plus-500{
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.font-m-plus-700{
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.font-m-plus-800{
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.font-m-plus-900 {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+.font-josefin-100{
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+.font-josefin-200{
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+.font-josefin-300{
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+.font-josefin-400{
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+.font-josefin-500{
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+.font-josefin-600{
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+.font-josefin-700{
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+.font-josefin-800{
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
+.font-josefin-900{
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.fadeIn{
+    animation: 0.5s fadeIn;
+}
+.fadeIn-1{
+    animation: 1s fadeIn;
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.slideBottom{
+    animation: 0.5s fadeIn;
+    position: relative;
+}
+.slideBottom-1{
+    animation: 1s fadeIn;
+    position: relative;
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+        bottom: -50px;
+    }
+    to {
+        opacity: 1;
+        bottom: 0px;
+    }
+}
+
+
+.navbar{
+    width: 100%;
+    background-color: var(--first);
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+.navbar .navbarCont{
+    max-width: 1600px;
+    margin: auto;
+    padding: 10px 40px 5px 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar .navbarCont .logo{
+    font-size: 34px;
+    color: white;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.navbar .navbarCont .logo #firstLottie{
+    transform: scale(2);
+}
+.navbar .navbarCont  .rightContent{
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+.navbar .navbarCont  .rightContent .language{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+}
+.navbar .navbarCont  .rightContent .language img.active{
+    border: 2px solid white;
+    border-radius: 100%;
+    transform: scale(1.2);
+}
+.navbar .navbarCont .authBox{
+    display: flex;
+}
+.navbar .navbarCont .authBox .menuButton{
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    color: white;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    gap: 10px;
+    text-transform: lowercase !important;
+    min-width: 200px;
+    
+}
+.navbar .navbarCont .authBox .menuButton .avatar img{
+    width: 52px;
+    height: 52px;
+    background-color: #d5d5d5;
+    border-radius: 100%;
+    object-fit: contain;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.24);
+    border:1px solid white;
+}
+div:has(> .MuiMenu-list){
+    background-color: var(--first);
+}
+.MuiMenu-list{
+    min-width: 200px;
+    background-color: var(--first);
+    color: white;
+    padding: 0px !important;
+}
+.MuiMenu-list li{
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 12px 20px;
+
+}
+.MuiMenu-list li.logout{
+    color: #ff4343;
+    font-weight: 600;
+}
+
+.navbar .navbarCont .authBox.notLoged{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.navbar .navbarCont .authBox .userAuth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+}
+.navbar .navbarCont .authBox .userAuth .login{
+    padding: 5px 20px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 2px solid var(--first);
+    border-radius: 10px;
+}
+.navbar .navbarCont .authBox .userAuth .register{
+    padding: 5px 20px;
+    border: 2px solid white;
+    background-color: white;
+    border-radius: 10px;
+    color: var(--first);
+    cursor: pointer;
+    transition: 0.2s;
+}
+.navbar .navbarCont .authBox .userAuth .login:hover{
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.151);
+    border: 2px solid white;
+    background-color: var(--first);
+    color: white;
+}
+.navbar .navbarCont .authBox .userAuth .register:hover{
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.151);
+    background-color: var(--first);
+    color: white;
+}
+.navbar .navbarCont .authBox .businessAuth{
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px 20px;
+    border: 2px solid var(--first);
+    border-radius: 10px;
+    transition: 0.2s;
+}
+.navbar .navbarCont .authBox .businessAuth:hover{
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.151);
+    border: 2px solid white;
+    background-color: var(--first);
+    color: white;
+}

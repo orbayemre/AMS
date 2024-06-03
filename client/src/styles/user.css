@@ -1,0 +1,324 @@
+
+.myappointments{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: 50px 50px 50px 200px;
+    animation: 0.5s showActive;
+}
+.myappointments .myappointmentsHeader h1{
+    font-size: 34px;
+    color: var(--first);
+    padding: 20px 0px 10px 20px;
+    border: 3px solid var(--first);
+    border-radius: 10px;
+}
+.myappointments .myappointmentsBody{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-left: 30px;
+    width: auto;
+}
+
+.myappointments .myappointmentsBody .control .controlTabs{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.myappointments .myappointmentsBody .control .controlTabs .tabItem{
+    font-size: 20px;
+    padding: 0px 20px 0px 20px;
+    color: #afafaf;
+    line-height: 1.2;
+    border-bottom:1px solid #afafaf;
+    cursor: pointer;
+    min-width: 140px;
+    text-align: center;
+}
+.myappointments .myappointmentsBody .control .controlTabs .tabItem.active{
+    color: var(--first);
+    font-weight: 600;
+    border-bottom:3px solid var(--first);
+}
+
+.myappointmentCard{
+    display: flex;
+    flex-direction: column;
+    border : 2px solid var(--first);
+    box-shadow:  #1C4B82 0px 0px 10px, white 0px 0px 0px 2px, var(--first) 0px 0px 0px 4px;
+    border-radius: 10px;
+    max-width: 700px;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    color: var(--first);
+}
+.myappointmentCard .cardHead{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: start;
+}
+.myappointmentCard .cardHead .date{
+    display: flex;
+    font-size: 22px;
+    font-weight: 700;
+    gap: 5px;
+}
+.myappointmentCard .cardHead .hour{
+    display: flex;
+    font-size: 16px;
+    font-weight: 600;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.myappointmentCard .cardBody{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+}
+.myappointmentCard .cardBody .business{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.myappointmentCard .cardBody .business div{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+}
+.myappointmentCard .cardBody .business div.name{
+    font-size: 18px;
+    font-weight: 600;
+}
+.myappointmentCard .cardBody .business div span{
+    padding-top: 3px;
+}
+.myappointmentCard .cardBody .business div svg{
+    width: 24px;
+    height: 24px;
+    fill: var(--first);
+}
+.myappointmentCard .cardBody .status{
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+.myappointmentCard .cardBody .status .approved{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.myappointmentCard .cardBody .status .approved svg{
+    width: 18px;
+    height: 18px;
+    fill: var(--first);
+}
+.myappointmentCard .cardBody .status .pending{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.myappointmentCard .cardBody .status .pending .head{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.myappointmentCard .cardBody .status .pending .head svg{
+    width: 28px;
+    height: 28px;
+    fill: var(--first);
+
+}
+
+
+
+.myAccount{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin: 50px auto;
+    animation: 0.5s showActive;
+}
+.myAccount .header{
+    width: 100%;
+    font-size: 34px;
+    color: var(--first);
+    padding: 20px 0px 10px 20px;
+    border: 3px solid var(--first);
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.myAccount .infoHeader{
+    font-size: 28px;
+    color: var(--first);
+}
+.myAccount .profile{
+    width: 80%;
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    margin-bottom: 50px;
+    margin: 0px auto 50px;
+    gap: 50px;
+}
+.myAccount .profile .profileImageBox{
+    max-width: 400px;
+    aspect-ratio : 1 / 1;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #d5d5d5;
+}
+.myAccount .profile .profileImageBox .profileImage{
+    width: 100%;
+    object-fit: contain;
+}
+.myAccount .profile .profileImageBox .hoverUpload{
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-color: #1c4c82bb;
+    z-index: 10;
+    transition: 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: var(--third);
+}
+.myAccount .profile .profileImageBox .hoverUpload:hover{
+    opacity: 0.8;
+}
+.myAccount .profile .profileImageBox .hoverUpload svg{
+    width: 25%;
+}
+.myAccount .profile .profileImageBox input{
+    display: none;
+}
+.myAccount .profile .profileImageBox .noImage{
+    width: 400px;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.myAccount .profile .profileImageBox .noImage svg{
+    width: 50%;
+}
+.myAccount .profile .profileImageBox .noImage svg path{
+    stroke: var(--first);
+}
+
+
+.myAccount .profile .profileInfoBox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+.myAccount .profile .profileInfoBox .profileInfoField label{
+    font-size: 18px;
+    color: var(--first);
+}
+.myAccount .saveChangesProfile{
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    border: 2px solid #4f772d;
+    background-color: #4f772d;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.myAccount .saveChangesProfile:hover{
+    background-color: transparent;
+    color: #4f772d;
+}
+
+
+.myAccount .others{
+    width: 80%;
+    display: flex;
+    align-items: start; 
+    justify-content: space-between;
+    margin-bottom: 50px;
+    margin: 50px auto 50px;
+    padding-left: 50px;
+    gap: 50px;
+}
+.myAccount .others .passwordBox{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.myAccount .others .passwordBox label{
+    font-size: 18px;
+    color: var(--first);
+}
+.myAccount .others .passwordBox .saveChangesPass{
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    border: 2px solid #4f772d;
+    background-color: #4f772d;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+
+}
+.myAccount .others .passwordBox .saveChangesPass:hover{
+    background-color: transparent;
+    color: #4f772d;
+}
+.myAccount .others .phoneBox{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.myAccount .others .phoneBox label{
+    font-size: 18px;
+    color: var(--first);
+}
+.myAccount .others .phoneBox .saveChangesPhone{
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    border: 2px solid #4f772d;
+    background-color: #4f772d;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+
+}
+.myAccount .others .phoneBox .saveChangesPhone:hover{
+    background-color: transparent;
+    color: #4f772d;
+}
