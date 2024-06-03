@@ -15,6 +15,7 @@ import '../../styles/common.css';
 import '../../styles/auth.css';
 import Lottie from "../../components/Animations/Lottie";
 import ForgotPass from "../../components/Modals/ForgotPass";
+import NavBar from "../../components/Others/NavBar";
 
 export default function BusinessLogin(){
 
@@ -91,45 +92,48 @@ export default function BusinessLogin(){
 
 
     return(
-        <div className="container businessLoginContainer">
-            <div className="userLoginInfo">
-                <div className="head">
-                    <Lottie link={"https://lottie.host/bba55b7b-18f5-416a-8ed3-6efd903dea5f/JSETJGthQE.json"} width={"350px"} height={"350px"} loop={true} />
+        <>
+            <NavBar/>
+            <div className="container businessLoginContainer">
+                <div className="userLoginInfo">
+                    <div className="head">
+                        <Lottie link={"https://lottie.host/bba55b7b-18f5-416a-8ed3-6efd903dea5f/JSETJGthQE.json"} width={"350px"} height={"350px"} loop={true} />
+                    </div>
+                    <div className="body font-josefin-500">
+                        {t("would you like to log in as your").split("{keyword}")[0]}
+                        <a href="/user/login">{t("user account?")} </a>
+                        {t("would you like to log in as your").split("{keyword}")[1]}
+                    </div>
                 </div>
-                <div className="body font-josefin-500">
-                    {t("would you like to log in as your").split("{keyword}")[0]}
-                    <a href="/user/login">{t("user account?")} </a>
-                    {t("would you like to log in as your").split("{keyword}")[1]}
+                <div className="businessLoginBox"> 
+                    <div className="header font-josefin-500">
+                        <h1>{t("business login")}</h1>
+                    </div>
+                    <div className="formBody">
+                        <div className="formField">
+                            <MailInput value={email} placeholder={t('email')} onChange={handleEmail} autoFocus={true} theme={2}/>
+                        </div>
+                        <div className="formField">
+                            <PasswordInput value={password} placeholder={t('password')} onChange={handlePassword} theme={2}/>
+                        </div>
+                        <ForgotPass userType="business"/>
+                        <div className="validationMessage font-josefin-500">
+                            { validationMessage  }
+                        </div>
+                        
+                        <div className="submitButton font-josefin-500" onClick={handleSubmit}>
+                            {t("login")}
+                        </div>
+                        <div className="needAccount font-josefin-500">
+                            <a href="/business/register">
+                                {t("don't have a business account")}
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                <ToastContainer />
             </div>
-            <div className="businessLoginBox"> 
-                <div className="header font-josefin-500">
-                    <h1>{t("business login")}</h1>
-                </div>
-                <div className="formBody">
-                    <div className="formField">
-                        <MailInput value={email} placeholder={t('email')} onChange={handleEmail} autoFocus={true} theme={2}/>
-                    </div>
-                    <div className="formField">
-                        <PasswordInput value={password} placeholder={t('password')} onChange={handlePassword} theme={2}/>
-                    </div>
-                    <ForgotPass userType="business"/>
-                    <div className="validationMessage font-josefin-500">
-                        { validationMessage  }
-                    </div>
-                    
-                    <div className="submitButton font-josefin-500" onClick={handleSubmit}>
-                        {t("login")}
-                    </div>
-                    <div className="needAccount font-josefin-500">
-                        <a href="/business/register">
-                            {t("don't have a business account")}
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <ToastContainer />
-        </div>
+        </>
     )
 }
 

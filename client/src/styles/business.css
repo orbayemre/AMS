@@ -8,7 +8,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .weekControl{
@@ -175,6 +175,7 @@
     background-color: var(--first);
     color: var(--third);
     border: none;
+    width: 300px;
 }
 .accountContainer .sidebar .hamburger{
     display: flex;
@@ -201,6 +202,14 @@
 .accountContainer .sidebar .menu .menuItem a span svg{
     display: flex;
     fill: white;
+    min-width: 34px;
+    min-height: 30px;
+    max-width: 34px;
+    max-height: 30px;
+}
+.ps-menu-icon svg{
+    display: flex;
+    fill: white;
     min-width: 30px;
     min-height: 30px;
     max-width: 30px;
@@ -220,6 +229,20 @@
 .accountContainer .sidebar .menu .menuItem a.ps-active svg{
     fill: var(--first);
 }
+.accountContainer .sidebar .menu .ps-submenu-content .ps-menu-button{
+    transition: 0.2s;
+    background-color: var(--first);
+}
+.accountContainer .sidebar .menu .ps-submenu-content .ps-menu-button.ps-active{
+    background-color: white;
+    color: var(--first);
+}
+.ps-submenu-content{
+    border: 2px solid var(--first);
+    border-radius: 10px !important;
+    background-color: var(--first) !important;
+}
+
 .accountContainer .sidebar .menu .menuItem.logout{
     position: absolute;
     bottom: 10px;
@@ -245,7 +268,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin: 50px 50px 50px 300px;
+    margin: 50px 50px 50px 350px;
     animation: 0.5s showActive;
 }
 .baSection .baHeader h2{
@@ -796,4 +819,423 @@
     color: var(--first);
     cursor: pointer;
     margin-bottom: 20px;
+}
+
+
+
+
+.bimgSection h2{
+    font-size: 34px;
+    color: var(--first);
+    padding: 20px 0px 10px 20px;
+    border: 3px solid var(--first);
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+.bimgSection .addImage{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.bimgSection .addImage input{
+    margin-top: 50px;
+    width: 500px;
+
+}
+.bimgSection .addImage input[type="file"] {
+    display: none;
+}
+  
+.bimgSection .addImage .custom-file-upload {
+    border: 2px solid var(--first);
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: var(--first);
+    margin-top: 50px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+.bimgSection .addImage .custom-file-upload:hover{
+    background-color: var(--first);
+    color: white;
+}
+.bimgSection .addImage .load{
+    padding: 8px 20px;
+    background-color: #4f772d;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.bimgSection .addImage .uploadImage{
+    max-width: 400px;
+    margin-top: 10px;
+}
+
+.gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.gallery__item img {
+    width: 100%;
+}
+
+.lg-toolbar  .deleteButton{
+    color: var(--third);
+    position: absolute;
+    right: 10%;
+    top: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 10px;
+    background-color: #ff4747;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+
+.msSection{
+    display: flex;
+}
+.msSection h2{
+    font-size: 34px;
+    color: var(--first);
+    padding: 20px 0px 10px 20px;
+    border: 3px solid var(--first);
+    border-radius: 10px;
+}
+
+.msSection .switchButton span{
+    font-family: "Josefin Sans", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 26px;
+    color: var(--first);
+}
+.msSection .subSwitch{
+    width: 80%;
+    margin-top: 50px;
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.msSection .subSwitch .subSwitchDesc{
+    font-size: 16px;
+    color: var(--first);
+}   
+
+.msSection .subSwitch .saveChanges{
+    max-width: 200px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    margin-top: 20px;
+    padding: 7px 30px;
+    border-radius: 10px;
+    background-color: #4f772d;
+    color: white;
+    border: 2px solid #4f772d;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: #50772d2c 0px 2px 8px 0px;
+}
+.msSection .subSwitch .saveChanges:hover{
+    background-color: white;
+    color: #4f772d;
+    box-shadow: #50772d4f 0px 2px 10px 0px;
+}
+
+.msSection .subsBox{
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50px;
+
+}
+.msSection .subsBox .subsHeader{
+    font-size: 26px;
+    color: var(--first);
+    font-weight: 600;
+}
+.msSection .subsBox .notFoundSubs{
+    font-size: 20px;
+    color: #ababab;
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+}
+.msSection .subsBox .subCard{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px 20px 20px;
+    border: 2px solid var(--first);
+    border-radius: 20px;
+    font-size: 18px;
+    color: var(--first);
+    box-shadow: #2d53773f 0px 2px 10px 0px;
+    margin: 15px 0px;
+}
+.msSection .subsBox .subCard .remove{
+    cursor: pointer;
+}
+.msSection .subsBox .subCard .remove svg{
+    width: 40px;
+    height: 40px;
+    fill: transparent;
+}
+.msSection .subsBox .subCard .remove svg path{
+    stroke: #ff4747;
+}
+
+
+
+.msSection .addSub{
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50px;
+
+}
+.msSection .addSub .addSubHeader{
+    font-size: 26px;
+    color: var(--first);
+    font-weight: 600;
+}
+
+
+
+.msSection .addSub .formBody{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 20px;
+
+}
+.msSection .addSub .formBody .formField{
+    margin: 5px 20px;
+    width: 100%;
+}
+.msSection .addSub .formBody .formField.formFieldTypeRadio{
+    width: auto;
+    margin-left: 22px;
+}
+.msSection .addSub .formBody .formField.formFieldTypeRadio{
+    width: 100%;
+    margin-left: 22px;
+}
+
+.msSection .addSub .formBody .formField .address-selection input{
+    border: none;
+    outline: none;
+    caret-color: transparent;
+    cursor: pointer;
+}
+.msSection .addSub .formBody .formField .address-selection .stdropdown-item.selected{
+    background-color: var(--first);
+}
+.msSection .addSub .formBody .formField .address-selection .stdropdown-tool svg{
+    fill: var(--first);
+}
+.msSection .addSub .formBody .formField .address-selection .stdropdown-menu{
+    max-height: 200px;
+}
+
+.msSection .addSub .formBody .formField.contentField{
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+}
+.msSection .addSub .formBody .formField.contentField .head{
+    color: var(--first);
+    margin-bottom: 5px;
+}
+.msSection .addSub .formBody .formField.contentField .content{
+    width: 95%;
+    min-height: 100px;
+    font-size: 16px;
+    border: 1.5px solid var(--first);
+    border-radius: 10px;
+    outline-color: var(--first);
+    padding: 10px 20px;
+    resize: none;
+    color: var(--first);
+
+}
+
+
+.msSection .addSub  .formBody .formField.daysCheckboxCont{
+    margin: 0px;
+    width: 100%;
+}
+
+.msSection .addSub .formBody .formField.timePickerCont{
+    margin-left: 20px;
+    width: 100%;
+}
+
+.msSection .addSub .formBody .formEnd{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 13px;
+}
+.msSection .addSub .formBody .submitButton{
+    margin-top: 5px;
+    margin: 5px auto;
+    padding: 6px 0px;
+    width: 50%;
+    background-color: var(--first);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--third);
+    font-size: 18px;
+    border: 1px solid var(--third);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.msSection .addSub .formBody .submitButton:hover{
+    
+    background-color: var(--third);
+    color: var(--first);
+    border: 1px solid var(--first);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.msSection .addSub .formBody .validationMessage{
+    min-width: 40%;
+    min-height: 24px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 14;
+    color: rgb(255, 105, 105);
+}
+
+
+.detailContainer{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 20px auto 50px;
+}
+.detailContainer .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 20px auto 0px;
+}
+.detailContainer .header .names{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+.detailContainer .header .names .name{
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--first);
+}
+.detailContainer .header .names .longName{
+    font-size: 15px;
+}
+.detailContainer .header .type{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.detailContainer .header .type svg{
+    width: 64px;
+    height: 64px;
+    fill: var(--first);
+}
+.detailContainer .header .type span{
+    color: var(--first);
+    font-weight: 600;
+}
+.detailContainer .infoHeader{
+    font-size: 26px;
+    margin: 20px 0px 0px 0px;
+    color: var(--first);
+
+}
+.detailContainer .infoHeader.calendarHeader{
+    margin-top: 60px;
+}
+.detailContainer .businessContent .desc{
+    font-size: 16px;
+    text-align: justify;
+    padding-left: 10px;
+}
+.detailContainer .businessServices .services{
+    list-style: outside;
+    display: flex;
+    gap: 30px;
+    padding-left: 30px;
+}
+.detailContainer .businessServices .services .service{
+    font-size: 17px;
+}
+.detailContainer .businessAddressContact .addressContact{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.detailContainer .businessAddressContact .addressContact .address{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    max-width: 400px;
+    margin-right: 150px;
+}
+.detailContainer .businessAddressContact .addressContact .address .cityDistrict{
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--first);
+}
+.detailContainer .businessAddressContact .addressContact .address .street{
+    font-size: 14px;
+}
+.detailContainer .businessAddressContact .addressContact .contact{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.detailContainer .businessAddressContact .addressContact .contact .contactItem{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+.detailContainer .businessAddressContact .addressContact .contact .contactItem svg{
+    width: 32px;
+}
+.detailContainer .businessAddressContact .addressContact .contact .contactItem.phone svg{
+    transform: rotate(90deg);
+}
+.detailContainer .businessAddressContact .addressContact .contact .contactItem svg path{
+    stroke: var(--first);
 }

@@ -172,7 +172,7 @@ export default function BusinessAppointmentsSection({id,isSub}){
                 </div>
                 <div className="content">
                     {
-                        contentLoading ?  <> Loading... </> :
+                        contentLoading ?  <> {t('Loading...')} </> :
                         activeData.map((appointment,index) =>{
                             return(
                                 <AppointmentCard

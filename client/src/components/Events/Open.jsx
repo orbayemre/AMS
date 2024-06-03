@@ -47,7 +47,7 @@ export default function Open({index, bId, event, day, startTime, endTime, isSub}
             if(data.status == "success"){
                 toast.success(t(data.message), {
                     position: "bottom-center",
-                    autoClose: 3000,
+                    autoClose: 2000,
                     hideProgressBar: true,
                     closeOnClick: true,
                     pauseOnHover: true,
@@ -58,9 +58,8 @@ export default function Open({index, bId, event, day, startTime, endTime, isSub}
                 });
                 closeModal();
                 setTimeout(() => {
-                    navigate(0);
-                    //şu anda refresh ama randevularım sayfası yapıldıktan sonra oraya atabilir.
-                }, 3500);
+                    navigate("/user/my-appointments");
+                }, 2500);
 
             }else{
                 toast.error(t(data.message), {

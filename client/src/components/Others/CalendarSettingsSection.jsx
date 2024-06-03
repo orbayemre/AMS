@@ -10,23 +10,23 @@ import Params from "../../params";
 import DaysCheckboxButtons from "../Buttons/DaysCheckboxButtons"
 import TimePicker from "../Inputs/TimePicker";
 
-export default function CalendarSettingsSection(){
+export default function CalendarSettingsSection({isSub=false,subId=null,business}){
 
     const {data, accessToken} = useSelector(state => state.authStore);
     const {t} = useTranslation()
     const navigate = useNavigate();
    
-    const [monday,setMonday] = useState(data.business.working_days.monday);
-    const [tuesday,setTuesday] = useState(data.business.working_days.tuesday);
-    const [wednesday,setWednesday] = useState(data.business.working_days.wednesday);
-    const [thursday,setThursday] = useState(data.business.working_days.thursday);
-    const [friday,setFriday] = useState(data.business.working_days.friday);
-    const [saturday,setSaturday] = useState(data.business.working_days.saturday);
-    const [sunday,setSunday] = useState(data.business.working_days.sunday);
-    const [startTime,setStartTime] = useState(data.business.working_hours.start);
-    const [endTime,setEndTime] = useState(data.business.working_hours.end);
-    const [duration,setDuration] = useState(parseInt(data.business.working_hours.appointment_duration));
-    const [breakTime,setBreakTime] = useState(parseInt(data.business.working_hours.break_time));
+    const [monday,setMonday] = useState(business.working_days.monday);
+    const [tuesday,setTuesday] = useState(business.working_days.tuesday);
+    const [wednesday,setWednesday] = useState(business.working_days.wednesday);
+    const [thursday,setThursday] = useState(business.working_days.thursday);
+    const [friday,setFriday] = useState(business.working_days.friday);
+    const [saturday,setSaturday] = useState(business.working_days.saturday);
+    const [sunday,setSunday] = useState(business.working_days.sunday);
+    const [startTime,setStartTime] = useState(business.working_hours.start);
+    const [endTime,setEndTime] = useState(business.working_hours.end);
+    const [duration,setDuration] = useState(parseInt(business.working_hours.appointment_duration));
+    const [breakTime,setBreakTime] = useState(parseInt(business.working_hours.break_time));
     const [closeDate,setCloseDate] = useState(moment().toJSON().split("T")[0]  + "T" + (parseInt(moment().toJSON().split("T")[1].split(":")[0]) + 1).toString() + ":00")
     const [changedWD,setChangedWD] = useState(false);
     const [changedWH,setChangedWH] = useState(false);
@@ -83,201 +83,17 @@ export default function CalendarSettingsSection(){
 
 
     const submitWD = () => {
-        axios.post(Params.api+"/api/business/update-account",{
-            "working_days":{
-                "monday": monday,
-                "tuesday": tuesday,
-                "wednesday": wednesday,
-                "thursday": thursday,
-                "friday": friday,
-                "saturday": saturday,
-                "sunday": sunday
-            },
-        },{
-            headers:{
-                "Authorization" : "Bearer " + accessToken,
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(({data})=>{
-            if(data.status == "success"){
-                toast.success(t("working days updated"), {
-                    position: "bottom-center",
-                    autoClose: 1500,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                });
-                setTimeout(() => {
-                    navigate(0)
-                }, 1600);
-            }else{
-                toast.error(t(data.message), {
-                    position: "bottom-center",
-                    autoClose: 5000,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                });
-            }
-        })
-        .catch(function (error) {
-            toast.error(t(error.response.data.message), {
-                position: "bottom-center",
-                autoClose: 5000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                });
-        });
-    }
-
-    const submitWH = () => {
-
-        axios.post(Params.api+"/api/business/update-account", {
-            "working_hours":{
-                "start": startTime,
-                "end": endTime,
-                "appointment_duration": data.business.working_hours.appointment_duration,
-                "break_time": data.business.working_hours.break_time,
-                "lunch": null,
-            },
-        },{
-            headers:{
-                "Authorization" : "Bearer " + accessToken,
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(({data})=>{
-            if(data.status == "success"){
-                toast.success(t("working hours updated"), {
-                    position: "bottom-center",
-                    autoClose: 1500,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                });
-                setTimeout(() => {
-                    navigate(0)
-                }, 1600);
-            }else{
-                toast.error(t(data.message), {
-                    position: "bottom-center",
-                    autoClose: 5000,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                });
-            }
-        })
-        .catch(function (error) {
-            toast.error(t(error.response.data.message), {
-                position: "bottom-center",
-                autoClose: 5000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                });
-        });
-    }
-
-    const submitAT = () => {
-
-        axios.post(Params.api+"/api/business/update-account", {
-            "working_hours":{
-                "start": data.business.working_hours.start,
-                "end": data.business.working_hours.end,
-                "appointment_duration": duration.toString(),
-                "break_time": breakTime.toString(),
-                "lunch": null,
-            },
-        },{
-            headers:{
-                "Authorization" : "Bearer " + accessToken,
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(({data})=>{
-            if(data.status == "success"){
-                toast.success(t("appointment time updated"), {
-                    position: "bottom-center",
-                    autoClose: 1500,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                });
-                setTimeout(() => {
-                    navigate(0)
-                }, 1600);
-            }else{
-                toast.error(t(data.message), {
-                    position: "bottom-center",
-                    autoClose: 5000,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                });
-            }
-        })
-        .catch(function (error) {
-            toast.error(t(error.response.data.message), {
-                position: "bottom-center",
-                autoClose: 5000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                });
-        });
-    }
-
-    const submitAC = () => {
-        if(!data.business.has_sub){
-            var momentEndTime = moment.utc(closeDate);
-            momentEndTime.add(parseInt(data.business.working_hours.appointment_duration), 'm');
-            const endTime = momentEndTime.toJSON().split("T")[0]  + "T" + momentEndTime.toJSON().split("T")[1].split(":")[0]+ ":" + momentEndTime.toJSON().split("T")[1].split(":")[1]
-            
-            const startHour = closeDate.split("T")[1].split(":")[0] + ":" + closeDate.split("T")[1].split(":")[1]
-            const endHour = endTime.split("T")[1].split(":")[0] + ":" + endTime.split("T")[1].split(":")[1]
-
-            axios.post(Params.api+"/api/appointment/close", {
-                "date" : {
-                    "day" : parseInt(closeDate.split("T")[0].split("-")[2]),
-                    "month" : parseInt(closeDate.split("T")[0].split("-")[1]),
-                    "year" : parseInt(closeDate.split("T")[0].split("-")[0]),
-                    "start" : startHour,
-                    "end" : endHour,
+        if(!isSub){
+            axios.post(Params.api+"/api/business/update-account",{
+                "working_days":{
+                    "monday": monday,
+                    "tuesday": tuesday,
+                    "wednesday": wednesday,
+                    "thursday": thursday,
+                    "friday": friday,
+                    "saturday": saturday,
+                    "sunday": sunday
                 },
-                "start_time": closeDate,
-                "end_time": endTime,
-                "is_sub": false,
-                "sub_id": null
             },{
                 headers:{
                     "Authorization" : "Bearer " + accessToken,
@@ -286,7 +102,7 @@ export default function CalendarSettingsSection(){
             })
             .then(({data})=>{
                 if(data.status == "success"){
-                    toast.success(t("selected appointment closed"), {
+                    toast.success(t("working days updated"), {
                         position: "bottom-center",
                         autoClose: 1500,
                         hideProgressBar: true,
@@ -296,7 +112,9 @@ export default function CalendarSettingsSection(){
                         progress: undefined,
                         theme: "light",
                     });
-                    setChangedAC(false);
+                    setTimeout(() => {
+                        navigate(0)
+                    }, 1600);
                 }else{
                     toast.error(t(data.message), {
                         position: "bottom-center",
@@ -322,11 +140,369 @@ export default function CalendarSettingsSection(){
                     theme: "light",
                     });
             });
-
         }
         else{
-
+            
+            axios.post(Params.api+"/api/business/update-sub",{
+                "subId" : subId,
+                "working_days":{
+                    "monday": monday,
+                    "tuesday": tuesday,
+                    "wednesday": wednesday,
+                    "thursday": thursday,
+                    "friday": friday,
+                    "saturday": saturday,
+                    "sunday": sunday
+                },
+            },{
+                headers:{
+                    "Authorization" : "Bearer " + accessToken,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(({data})=>{
+                if(data.status == "success"){
+                    toast.success(t("working days updated"), {
+                        position: "bottom-center",
+                        autoClose: 1500,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    setTimeout(() => {
+                        navigate(0)
+                    }, 1600);
+                }else{
+                    toast.error(t(data.message), {
+                        position: "bottom-center",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                }
+            })
+            .catch(function (error) {
+                toast.error(t(error.response.data.message), {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
+            });
         }
+    }
+
+    const submitWH = () => {
+        if(!isSub){
+            axios.post(Params.api+"/api/business/update-account", {
+                "working_hours":{
+                    "start": startTime,
+                    "end": endTime,
+                    "appointment_duration": business.working_hours.appointment_duration,
+                    "break_time": business.working_hours.break_time,
+                    "lunch": null,
+                },
+            },{
+                headers:{
+                    "Authorization" : "Bearer " + accessToken,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(({data})=>{
+                if(data.status == "success"){
+                    toast.success(t("working hours updated"), {
+                        position: "bottom-center",
+                        autoClose: 1500,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    setTimeout(() => {
+                        navigate(0)
+                    }, 1600);
+                }else{
+                    toast.error(t(data.message), {
+                        position: "bottom-center",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                }
+            })
+            .catch(function (error) {
+                toast.error(t(error.response.data.message), {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
+            });
+        }
+        else{
+            
+            axios.post(Params.api+"/api/business/update-sub", {
+                "subId" : subId,
+                "working_hours":{
+                    "start": startTime,
+                    "end": endTime,
+                    "appointment_duration": business.working_hours.appointment_duration,
+                    "break_time": business.working_hours.break_time,
+                    "lunch": null,
+                },
+            },{
+                headers:{
+                    "Authorization" : "Bearer " + accessToken,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(({data})=>{
+                if(data.status == "success"){
+                    toast.success(t("working hours updated"), {
+                        position: "bottom-center",
+                        autoClose: 1500,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    setTimeout(() => {
+                        navigate(0)
+                    }, 1600);
+                }else{
+                    toast.error(t(data.message), {
+                        position: "bottom-center",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                }
+            })
+            .catch(function (error) {
+                toast.error(t(error.response.data.message), {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
+            });
+        }
+    }
+
+    const submitAT = () => {
+        if(!isSub){
+            axios.post(Params.api+"/api/business/update-account", {
+                "working_hours":{
+                    "start": business.working_hours.start,
+                    "end": business.working_hours.end,
+                    "appointment_duration": duration.toString(),
+                    "break_time": breakTime.toString(),
+                    "lunch": null,
+                },
+            },{
+                headers:{
+                    "Authorization" : "Bearer " + accessToken,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(({data})=>{
+                if(data.status == "success"){
+                    toast.success(t("appointment time updated"), {
+                        position: "bottom-center",
+                        autoClose: 1500,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    setTimeout(() => {
+                        navigate(0)
+                    }, 1600);
+                }else{
+                    toast.error(t(data.message), {
+                        position: "bottom-center",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                }
+            })
+            .catch(function (error) {
+                toast.error(t(error.response.data.message), {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
+            });
+        }
+        else{
+            
+            axios.post(Params.api+"/api/business/update-sub", {
+                "subId" : subId,
+                "working_hours":{
+                    "start": business.working_hours.start,
+                    "end": business.working_hours.end,
+                    "appointment_duration": duration.toString(),
+                    "break_time": breakTime.toString(),
+                    "lunch": null,
+                },
+            },{
+                headers:{
+                    "Authorization" : "Bearer " + accessToken,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(({data})=>{
+                if(data.status == "success"){
+                    toast.success(t("appointment time updated"), {
+                        position: "bottom-center",
+                        autoClose: 1500,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    setTimeout(() => {
+                        navigate(0)
+                    }, 1600);
+                }else{
+                    toast.error(t(data.message), {
+                        position: "bottom-center",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                }
+            })
+            .catch(function (error) {
+                toast.error(t(error.response.data.message), {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
+            });
+        }
+    }
+
+    const submitAC = () => {
+        
+        var momentEndTime = moment.utc(closeDate);
+        momentEndTime.add(parseInt(business.working_hours.appointment_duration), 'm');
+        const endTime = momentEndTime.toJSON().split("T")[0]  + "T" + momentEndTime.toJSON().split("T")[1].split(":")[0]+ ":" + momentEndTime.toJSON().split("T")[1].split(":")[1]
+        
+        const startHour = closeDate.split("T")[1].split(":")[0] + ":" + closeDate.split("T")[1].split(":")[1]
+        const endHour = endTime.split("T")[1].split(":")[0] + ":" + endTime.split("T")[1].split(":")[1]
+
+        axios.post(Params.api+"/api/appointment/close", {
+            "date" : {
+                "day" : parseInt(closeDate.split("T")[0].split("-")[2]),
+                "month" : parseInt(closeDate.split("T")[0].split("-")[1]),
+                "year" : parseInt(closeDate.split("T")[0].split("-")[0]),
+                "start" : startHour,
+                "end" : endHour,
+            },
+            "start_time": closeDate,
+            "end_time": endTime,
+            "is_sub": isSub,
+            "sub_id": isSub ? subId : null
+        },{
+            headers:{
+                "Authorization" : "Bearer " + accessToken,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(({data})=>{
+            if(data.status == "success"){
+                toast.success(t("selected appointment closed"), {
+                    position: "bottom-center",
+                    autoClose: 1500,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                setChangedAC(false);
+            }else{
+                toast.error(t(data.message), {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            }
+        })
+        .catch(function (error) {
+            toast.error(t(error.response.data.message), {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+        });
+
 
     }
 

@@ -16,6 +16,7 @@ import '../../styles/auth.css';
 import Lottie from "../../components/Animations/Lottie";
 import NameInput from "../../components/Inputs/NameInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
+import NavBar from "../../components/Others/NavBar";
 
 export default function UserRegister(){
 
@@ -122,50 +123,53 @@ export default function UserRegister(){
     },[]); 
 
     return(
-        <div className="container userRegisterContainer">
-            <div className="userRegisterBox"> 
-                <div className="header font-josefin-500">
-                    <Lottie link={"https://lottie.host/695f0bac-298f-4328-aefe-df543122364f/i4RPoZsmkp.json"} width={"150px"} height={"150px"} loop={true} />
-                    <h1>{t("user register")}</h1>
+        <>
+            <NavBar/>
+            <div className="container userRegisterContainer">
+                <div className="userRegisterBox"> 
+                    <div className="header font-josefin-500">
+                        <Lottie link={"https://lottie.host/695f0bac-298f-4328-aefe-df543122364f/i4RPoZsmkp.json"} width={"150px"} height={"150px"} loop={true} />
+                        <h1>{t("user register")}</h1>
+                    </div>
+                    
+                    <div className="formBody">
+                        <div className="formField">
+                            <NameInput value={name} placeholder={t('name')+"*"} onChange={handleName} autoFocus={true}/>
+                        </div>
+                        <div className="formField">
+                            <NameInput value={surname} placeholder={t('surname')+"*"} onChange={handleSurname}/>
+                        </div>
+                        <div className="formField">
+                            <MailInput value={email} placeholder={t('email')+"*"} onChange={handleEmail}/>
+                        </div>
+                        <div className="formField">
+                            <PhoneInput value={phone} placeholder={t('phone')} onChange={handlePhone}/>
+                        </div>
+                        <div className="formField">
+                            <PasswordInput value={password} placeholder={t('password')+"*"} onChange={handlePassword}/>
+                        </div>
+                        <div className="formField">
+                            <PasswordInput value={repassword} placeholder={t('re-password')+"*"} onChange={handleRePassword}/>
+                        </div>
+                        <div className="formEnd">
+                            <div className="validationMessage font-josefin-500">
+                                { validationMessage  }
+                            </div>
+                            
+                            <div className="submitButton font-josefin-500" onClick={handleSubmit}>
+                                {t("register")}
+                            </div>
+                            <div className="alreadyAccount font-josefin-500">
+                                <a href="/user/login">
+                                    {t("do you have already an account")}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div className="formBody">
-                    <div className="formField">
-                        <NameInput value={name} placeholder={t('name')+"*"} onChange={handleName} autoFocus={true}/>
-                    </div>
-                    <div className="formField">
-                        <NameInput value={surname} placeholder={t('surname')+"*"} onChange={handleSurname}/>
-                    </div>
-                    <div className="formField">
-                        <MailInput value={email} placeholder={t('email')+"*"} onChange={handleEmail}/>
-                    </div>
-                    <div className="formField">
-                        <PhoneInput value={phone} placeholder={t('phone')} onChange={handlePhone}/>
-                    </div>
-                    <div className="formField">
-                        <PasswordInput value={password} placeholder={t('password')+"*"} onChange={handlePassword}/>
-                    </div>
-                    <div className="formField">
-                        <PasswordInput value={repassword} placeholder={t('re-password')+"*"} onChange={handleRePassword}/>
-                    </div>
-                    <div className="formEnd">
-                        <div className="validationMessage font-josefin-500">
-                            { validationMessage  }
-                        </div>
-                        
-                        <div className="submitButton font-josefin-500" onClick={handleSubmit}>
-                            {t("register")}
-                        </div>
-                        <div className="alreadyAccount font-josefin-500">
-                            <a href="/user/login">
-                                {t("do you have already an account")}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <ToastContainer />
-        </div>
+                <ToastContainer />
+            </div>
+        </>
     )
 }

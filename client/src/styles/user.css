@@ -141,3 +141,184 @@
     fill: var(--first);
 
 }
+
+
+
+.myAccount{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin: 50px auto;
+    animation: 0.5s showActive;
+}
+.myAccount .header{
+    width: 100%;
+    font-size: 34px;
+    color: var(--first);
+    padding: 20px 0px 10px 20px;
+    border: 3px solid var(--first);
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.myAccount .infoHeader{
+    font-size: 28px;
+    color: var(--first);
+}
+.myAccount .profile{
+    width: 80%;
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    margin-bottom: 50px;
+    margin: 0px auto 50px;
+    gap: 50px;
+}
+.myAccount .profile .profileImageBox{
+    max-width: 400px;
+    aspect-ratio : 1 / 1;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #d5d5d5;
+}
+.myAccount .profile .profileImageBox .profileImage{
+    width: 100%;
+    object-fit: contain;
+}
+.myAccount .profile .profileImageBox .hoverUpload{
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-color: #1c4c82bb;
+    z-index: 10;
+    transition: 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: var(--third);
+}
+.myAccount .profile .profileImageBox .hoverUpload:hover{
+    opacity: 0.8;
+}
+.myAccount .profile .profileImageBox .hoverUpload svg{
+    width: 25%;
+}
+.myAccount .profile .profileImageBox input{
+    display: none;
+}
+.myAccount .profile .profileImageBox .noImage{
+    width: 400px;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.myAccount .profile .profileImageBox .noImage svg{
+    width: 50%;
+}
+.myAccount .profile .profileImageBox .noImage svg path{
+    stroke: var(--first);
+}
+
+
+.myAccount .profile .profileInfoBox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+.myAccount .profile .profileInfoBox .profileInfoField label{
+    font-size: 18px;
+    color: var(--first);
+}
+.myAccount .saveChangesProfile{
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    border: 2px solid #4f772d;
+    background-color: #4f772d;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.myAccount .saveChangesProfile:hover{
+    background-color: transparent;
+    color: #4f772d;
+}
+
+
+.myAccount .others{
+    width: 80%;
+    display: flex;
+    align-items: start; 
+    justify-content: space-between;
+    margin-bottom: 50px;
+    margin: 50px auto 50px;
+    padding-left: 50px;
+    gap: 50px;
+}
+.myAccount .others .passwordBox{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.myAccount .others .passwordBox label{
+    font-size: 18px;
+    color: var(--first);
+}
+.myAccount .others .passwordBox .saveChangesPass{
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    border: 2px solid #4f772d;
+    background-color: #4f772d;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+
+}
+.myAccount .others .passwordBox .saveChangesPass:hover{
+    background-color: transparent;
+    color: #4f772d;
+}
+.myAccount .others .phoneBox{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.myAccount .others .phoneBox label{
+    font-size: 18px;
+    color: var(--first);
+}
+.myAccount .others .phoneBox .saveChangesPhone{
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    border: 2px solid #4f772d;
+    background-color: #4f772d;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+
+}
+.myAccount .others .phoneBox .saveChangesPhone:hover{
+    background-color: transparent;
+    color: #4f772d;
+}

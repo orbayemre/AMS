@@ -13,6 +13,7 @@ import SearchResults from "../components/Others/SearchResults";
 import '../styles/common.css';
 import '../styles/search.css';
 import FilterTypeButtons from "../components/Buttons/FilterTypeButtons";
+import NavBar from "../components/Others/NavBar";
 
 
 export default function Search(){
@@ -179,7 +180,6 @@ export default function Search(){
 
     useEffect(()=>{
         if(searchResults){
-            console.log(searchResults)
             setLoading(false)
         }
     },[searchResults])
@@ -204,73 +204,76 @@ export default function Search(){
     if(loading){
         return(
             <div>
-                Loading...
+                {t('Loading...')}
             </div>
         )
     }
     else{
         return(
-            <div className="container searchContainer">
+            <>
+                <NavBar/>
+                <div className="container searchContainer">
 
-                <div className="searchBody">
-                    <div className="filters font-josefin-500">
-                        <h3>{t('Filters')}</h3>
-                        <div className="filter filterType">
-                            <FilterTypeButtons title={t('Type')} value={type} onChange={(val) => setType(val)}/>
+                    <div className="searchBody">
+                        <div className="filters font-josefin-500">
+                            <h3>{t('Filters')}</h3>
+                            <div className="filter filterType">
+                                <FilterTypeButtons title={t('Type')} value={type} onChange={(val) => setType(val)}/>
+                            </div>
+                            <div className="filter filterCity">
+                                <h4>{t('City')}:</h4>
+                                <StateSelect
+                                    countryid={225}
+                                    onChange={(e) => {
+                                        setCity(e.name);
+                                        setstateid(e.id);
+                                    }}
+                                    placeHolder={t('select city')}
+                                />
+                            </div>
+                            <div className="filter filterDistrict">
+                                
+                                <h4>{t('District')}:</h4>
+                                <CitySelect
+                                    countryid={225}
+                                    stateid={stateid}
+                                    onChange={(e) => {
+                                        setDistrict(e.name);
+                                        setdistrictid(e.id);
+                                    }}
+                                    placeHolder={ stateid != 0 ? t('select district') :  t('Please select city first')}
+                                />
+                            </div>
+                            <div className="apply" onClick={handleApply}>
+                                {t('Apply Filters')}
+                            </div>
                         </div>
-                        <div className="filter filterCity">
-                            <h4>{t('City')}:</h4>
-                            <StateSelect
-                                countryid={225}
-                                onChange={(e) => {
-                                    setCity(e.name);
-                                    setstateid(e.id);
-                                }}
-                                placeHolder={t('select city')}
-                            />
-                        </div>
-                        <div className="filter filterDistrict">
+                        <div className="resultsBody font-josefin-500">
+                            <div className="searchInputCont">
+                                <SearchInput value={q ? q : ""} placeholder={t('Search for business')} onChange={handleQ} submit={handleSubmit}/>
+                            </div>
                             
-                            <h4>{t('District')}:</h4>
-                            <CitySelect
-                                countryid={225}
-                                stateid={stateid}
-                                onChange={(e) => {
-                                    setDistrict(e.name);
-                                    setdistrictid(e.id);
-                                }}
-                                placeHolder={ stateid != 0 ? t('select district') :  t('Please select city first')}
-                            />
-                        </div>
-                        <div className="apply" onClick={handleApply}>
-                            {t('Apply Filters')}
-                        </div>
-                    </div>
-                    <div className="resultsBody font-josefin-500">
-                        <div className="searchInputCont">
-                            <SearchInput value={q ? q : ""} placeholder={t('Search for business')} onChange={handleQ} submit={handleSubmit}/>
+                            {searchResults?.length !== 0  && !scrollLoading && 
+                                <InfiniteScroll
+                                    dataLength={searchResults?.length}
+                                    next={getMoreData}
+                                    hasMore={hasMore}
+                                    //loader={<div>Loading...</div>}
+                                >
+                                    <SearchResults results={searchResults} />
+                                </InfiniteScroll>
+                            }
+                            {searchResults?.length === 0 && !scrollLoading && 
+                                <div>
+                                    No results found.
+                                </div>
+                            }
                         </div>
                         
-                        {searchResults?.length !== 0  && !scrollLoading && 
-                            <InfiniteScroll
-                                dataLength={searchResults?.length}
-                                next={getMoreData}
-                                hasMore={hasMore}
-                                //loader={<div>Loading...</div>}
-                            >
-                                <SearchResults results={searchResults} />
-                            </InfiniteScroll>
-                        }
-                        {searchResults?.length === 0 && !scrollLoading && 
-                            <div>
-                                No results found.
-                            </div>
-                        }
                     </div>
-                    
+                    <ToastContainer/>
                 </div>
-                <ToastContainer/>
-            </div>
+            </>
         )
     }
 }

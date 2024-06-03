@@ -3,10 +3,13 @@ const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 const { createHash } = require('crypto');
 const nodemailer = require('nodemailer');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+
 const Business = require('../models/businessModel');
 const {SubBusiness} = require('../models/businessModel');
 const Popularity =  require('../services/popularity');
-const { type } = require('os');
 
 
 class BusinessController {
@@ -300,6 +303,28 @@ class BusinessController {
         }
     }
 
+    static async updateSub(req, res) {
+        try {
+            const { subId } = req.body;
+            const subBusiness = await SubBusiness.findById(subId);
+            if (!subBusiness) {
+                return res.status(404).json({ message: 'Sub-Business not found' });
+            }
+            const { name, long_name, phone, content, working_days, working_hours } = req.body;
+
+            if(name) { subBusiness.name = name; }
+            if(long_name) { subBusiness.long_name = long_name; }
+            if(phone) { subBusiness.phone = phone; }
+            if(content) { subBusiness.content = content; }
+            if(working_days) { subBusiness.working_days = working_days; }
+            if(working_hours) { subBusiness.working_hours = working_hours; }
+            await subBusiness.save();
+            return res.status(200).json({ status: 'success', message: 'Business updated' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }
     static async deleteAccount(req, res) {
         try {
             const result = await Business.deleteOne({ _id: req._id });
@@ -480,8 +505,76 @@ class BusinessController {
     
 
 
-}
+    static async uploadImage(req, res){
+        try{    
 
+            const business = await Business.findById(req._id);
+            if (!business) {
+                return res.status(404).json({ message: 'Business not found' });
+            }
+            const imagePath = req.file.destination.split("/client")[1] + "/" + req.file.filename
+
+            if(imagePath) {
+                if(business.images.length > 0){
+                    business.images = [...business.images,imagePath]; 
+                }
+                else{
+                    business.images = [imagePath]; 
+                }
+            }
+            else{
+                return res.status(401).json({ message: 'An error occurred while uploading the image' });
+            }
+            await business.save();
+            return res.status(200).json({ status: 'success', message: 'Image uploaded' });
+            
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+
+    }
+    
+    static async deleteImage(req, res){
+        try{     
+            const business = await Business.findById(req._id);
+            if (!business) {
+                return res.status(404).json({ message: 'Business not found' });
+            }
+
+
+            const {image} = req.body;
+
+            const images = business.images.filter((img) => image !== img);
+
+            if(images.length > 0){
+                business.images = images; 
+            }
+            else{
+                business.images = []; 
+            }    
+            
+            const imagePath = '../client' + image;
+            if (fs.existsSync(imagePath)) {
+
+              fs.unlink(imagePath, (err) => {
+                if (err) {
+                  return res.status(500).json({ message: 'An error occurred while deleting the image.' });
+                }
+              });
+            } else {
+              res.status(404).json({ message: 'Image not found.' });
+            }
+
+            await business.save();
+            return res.status(200).json({ status: 'success', message: 'Image deleted.' });
+            
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }
+}
 
 
 module.exports = BusinessController;

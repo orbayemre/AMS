@@ -73,7 +73,7 @@ export default function WeekCalendar({id, activeWeek, weekLen, weeksData, appoin
     if(loading){
         return(
             <div>
-                Loading...
+                {t('Loading...')}
             </div>
         )
     }

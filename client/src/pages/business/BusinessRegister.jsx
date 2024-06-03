@@ -20,6 +20,7 @@ import TypeRadioButtons from "../../components/Buttons/TypeRadioButtons";
 import AddressSelection from "../../components/Inputs/AddressSelection";
 import DaysCheckboxButtons from "../../components/Buttons/DaysCheckboxButtons";
 import TimePicker from "../../components/Inputs/TimePicker";
+import NavBar from "../../components/Others/NavBar";
 
 const defaultWorkDays = {
     monday : true,
@@ -210,72 +211,75 @@ export default function BusinessRegister(){
     },[]); 
 
     return(
-        <div className="container businessRegisterContainer">
-            <div className="businessRegisterBox"> 
-                <div className="header font-josefin-500">
-                    <Lottie link={"https://lottie.host/b1b552a8-b070-4a1a-a39e-f9dc1c7b3506/EYdlbTWOJG.json"} width={"150px"} height={"150px"} loop={true} />
-                    <h1>{t("business register")}</h1>
-                </div>
-                
-                <div className="formBody">
-                    <div className="formField">
-                        <BusinessNameInput value={name} placeholder={t('company name')+"*"} onChange={handleName} autoFocus={true} theme={2}/>
+        <>
+            <NavBar/>
+            <div className="container businessRegisterContainer">
+                <div className="businessRegisterBox"> 
+                    <div className="header font-josefin-500">
+                        <Lottie link={"https://lottie.host/b1b552a8-b070-4a1a-a39e-f9dc1c7b3506/EYdlbTWOJG.json"} width={"150px"} height={"150px"} loop={true} />
+                        <h1>{t("business register")}</h1>
                     </div>
-                    <div className="formField">
-                        <BusinessNameInput value={longName} placeholder={t('long name')} onChange={handleLongName} theme={2}/>
-                    </div>
-                    <div className="formField">
-                        <MailInput value={email} placeholder={t('email')+"*"} onChange={handleEmail} theme={2}/>
-                    </div>
-                    <div className="formField">
-                        <PhoneInput value={phone} placeholder={t('phone')} onChange={handlePhone} theme={2}/>
-                    </div>
-                    <div className="formField">
-                        <PasswordInput value={password} placeholder={t('password')+"*"} onChange={handlePassword} theme={2}/>
-                    </div>
-                    <div className="formField">
-                        <PasswordInput value={repassword} placeholder={t('re-password')+"*"} onChange={handleRePassword} theme={2}/>
-                    </div>
-                    <div className="formField formFieldTypeRadio">
-                        <TypeRadioButtons title={t('choose your business type')+"*"} value={type} onChange={handleType}/>
-                    </div>
-                    <div className="formField addressSelectionCont">
-                        <AddressSelection setCity={handleCity} setDistrict={handleDistrict}/>
-                    </div>
-                    <div className="formField streetAddressCont font-josefin-500">
-                        <span className="head">{t('street address')}:</span>
-                        <textarea className="streetAddress" placeholder={t('type street address of your business')} onChange={handleStreetAddress}/>
-                    </div>
-                    <div className="formField daysCheckboxCont">
-                        <DaysCheckboxButtons title={t('choose your working days')+"*"} days={{monday,tuesday,wednesday,thursday,friday,saturday,sunday}} onChange={handleWorkDays}/>
-                    </div>
+                    
+                    <div className="formBody">
+                        <div className="formField">
+                            <BusinessNameInput value={name} placeholder={t('company name')+"*"} onChange={handleName} autoFocus={true} theme={2}/>
+                        </div>
+                        <div className="formField">
+                            <BusinessNameInput value={longName} placeholder={t('long name')} onChange={handleLongName} theme={2}/>
+                        </div>
+                        <div className="formField">
+                            <MailInput value={email} placeholder={t('email')+"*"} onChange={handleEmail} theme={2}/>
+                        </div>
+                        <div className="formField">
+                            <PhoneInput value={phone} placeholder={t('phone')} onChange={handlePhone} theme={2}/>
+                        </div>
+                        <div className="formField">
+                            <PasswordInput value={password} placeholder={t('password')+"*"} onChange={handlePassword} theme={2}/>
+                        </div>
+                        <div className="formField">
+                            <PasswordInput value={repassword} placeholder={t('re-password')+"*"} onChange={handleRePassword} theme={2}/>
+                        </div>
+                        <div className="formField formFieldTypeRadio">
+                            <TypeRadioButtons title={t('choose your business type')+"*"} value={type} onChange={handleType}/>
+                        </div>
+                        <div className="formField addressSelectionCont">
+                            <AddressSelection setCity={handleCity} setDistrict={handleDistrict}/>
+                        </div>
+                        <div className="formField streetAddressCont font-josefin-500">
+                            <span className="head">{t('street address')}:</span>
+                            <textarea className="streetAddress" placeholder={t('type street address of your business')} onChange={handleStreetAddress}/>
+                        </div>
+                        <div className="formField daysCheckboxCont">
+                            <DaysCheckboxButtons title={t('choose your working days')+"*"} days={{monday,tuesday,wednesday,thursday,friday,saturday,sunday}} onChange={handleWorkDays}/>
+                        </div>
 
-                    <div className="formField timePickerCont font-josefin-500">
-                        <span className="head">{t('choose your working time')+"*"}:</span>
-                        <div className="body">
-                            <TimePicker title={t("start")} hour={startTime.split(":")[0]} minute={startTime.split(":")[1]} onChange={handleStartTime}/>
-                            <TimePicker title={t("end")} hour={endTime.split(":")[0]} minute={endTime.split(":")[1]} onChange={handleEndTime}/>
+                        <div className="formField timePickerCont font-josefin-500">
+                            <span className="head">{t('choose your working time')+"*"}:</span>
+                            <div className="body">
+                                <TimePicker title={t("start")} hour={startTime.split(":")[0]} minute={startTime.split(":")[1]} onChange={handleStartTime}/>
+                                <TimePicker title={t("end")} hour={endTime.split(":")[0]} minute={endTime.split(":")[1]} onChange={handleEndTime}/>
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="formEnd">
-                        <div className="validationMessage font-josefin-500">
-                            { validationMessage  }
-                        </div>
-                        
-                        <div className="submitButton font-josefin-500" onClick={handleSubmit}>
-                            {t("register")}
-                        </div>
-                        <div className="alreadyAccount font-josefin-500">
-                            <a href="/business/login">
-                                {t("do you have already a business account")}
-                            </a>
+                        <div className="formEnd">
+                            <div className="validationMessage font-josefin-500">
+                                { validationMessage  }
+                            </div>
+                            
+                            <div className="submitButton font-josefin-500" onClick={handleSubmit}>
+                                {t("register")}
+                            </div>
+                            <div className="alreadyAccount font-josefin-500">
+                                <a href="/business/login">
+                                    {t("do you have already a business account")}
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <ToastContainer />
             </div>
-
-            <ToastContainer />
-        </div>
+        </>
     )
 }

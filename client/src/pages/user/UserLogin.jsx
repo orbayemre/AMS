@@ -15,6 +15,7 @@ import '../../styles/common.css';
 import '../../styles/auth.css';
 import Lottie from "../../components/Animations/Lottie";
 import ForgotPass from "../../components/Modals/ForgotPass";
+import NavBar from "../../components/Others/NavBar";
 
 export default function UserLogin(){
 
@@ -89,44 +90,47 @@ export default function UserLogin(){
     },[]); 
 
     return(
-        <div className="container userLoginContainer">
-            <div className="userLoginBox"> 
-                <div className="header font-josefin-500">
-                    <h1>{t("user login")}</h1>
+        <>
+            <NavBar/>
+            <div className="container userLoginContainer">
+                <div className="userLoginBox"> 
+                    <div className="header font-josefin-500">
+                        <h1>{t("user login")}</h1>
+                    </div>
+                    <div className="formBody">
+                        <div className="formField">
+                            <MailInput value={email} placeholder={t('email')} onChange={handleEmail} autoFocus={true}/>
+                        </div>
+                        <div className="formField">
+                            <PasswordInput value={password} placeholder={t('password')} onChange={handlePassword}/>
+                        </div>
+                        <ForgotPass userType="user"/>
+                        <div className="validationMessage font-josefin-500">
+                            { validationMessage  }
+                        </div>
+                        
+                        <div className="submitButton font-josefin-500" onClick={handleSubmit}>
+                            {t("login")}
+                        </div>
+                        <div className="needAccount font-josefin-500">
+                            <a href="/user/register">
+                                {t("don't have an account")}
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div className="formBody">
-                    <div className="formField">
-                        <MailInput value={email} placeholder={t('email')} onChange={handleEmail} autoFocus={true}/>
+                <div className="businessLoginInfo">
+                    <div className="head">
+                        <Lottie link={"https://lottie.host/c725a38a-2d68-4fd3-b51b-11683cdbc25d/Yu2q8OLGNJ.json"} width={"200px"} height={"200px"} loop={false} />
                     </div>
-                    <div className="formField">
-                        <PasswordInput value={password} placeholder={t('password')} onChange={handlePassword}/>
-                    </div>
-                    <ForgotPass userType="user"/>
-                    <div className="validationMessage font-josefin-500">
-                        { validationMessage  }
-                    </div>
-                    
-                    <div className="submitButton font-josefin-500" onClick={handleSubmit}>
-                        {t("login")}
-                    </div>
-                    <div className="needAccount font-josefin-500">
-                        <a href="/user/register">
-                            {t("don't have an account")}
-                        </a>
+                    <div className="body font-josefin-500">
+                        {t("would you like to log in as your").split("{keyword}")[0]}
+                        <a href="/business/login">{t("business account?")} </a>
+                        {t("would you like to log in as your").split("{keyword}")[1]}
                     </div>
                 </div>
+                <ToastContainer />
             </div>
-            <div className="businessLoginInfo">
-                <div className="head">
-                    <Lottie link={"https://lottie.host/c725a38a-2d68-4fd3-b51b-11683cdbc25d/Yu2q8OLGNJ.json"} width={"200px"} height={"200px"} loop={false} />
-                </div>
-                <div className="body font-josefin-500">
-                    {t("would you like to log in as your").split("{keyword}")[0]}
-                    <a href="/business/login">{t("business account?")} </a>
-                    {t("would you like to log in as your").split("{keyword}")[1]}
-                </div>
-            </div>
-            <ToastContainer />
-        </div>
+        </>
     )
 }

@@ -4,6 +4,10 @@ const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 const { createHash } = require('crypto');
 const nodemailer = require('nodemailer');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+
 const User = require('../models/userModel');
 
 
@@ -217,6 +221,63 @@ class UserController {
             return res.status(200).json({ status: 'success',  message: 'Password reset successful' });
         } catch (error) {
 
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }
+
+
+    
+
+    static async uploadImage(req, res){
+        try{    
+
+            const user = await User.findById(req._id);
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+            const imagePath = req.file.destination.split("/client")[1] + "/" + req.file.filename
+
+            if(imagePath) {
+                user.profile_image = imagePath; 
+            }
+            else{
+                return res.status(401).json({ message: 'An error occurred while uploading the image' });
+            }
+            await user.save();
+            return res.status(200).json({ status: 'success', message: 'Image uploaded' });
+            
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+
+    }
+    
+    static async deleteImage(req, res){
+        try{     
+            const user = await User.findById(req._id);
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+            
+            const imagePath = '../client' + user.profile_image;
+            if (fs.existsSync(imagePath)) {
+
+              fs.unlink(imagePath, (err) => {
+                if (err) {
+                  return res.status(500).json({ message: 'An error occurred while deleting the image.' });
+                }
+              });
+            } else {
+              res.status(404).json({ message: 'Image not found.' });
+            }
+
+            user.profile_image = null; 
+            await user.save();
+            return res.status(200).json({ status: 'success', message: 'Image deleted.' });
+            
+        } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal server error' });
         }

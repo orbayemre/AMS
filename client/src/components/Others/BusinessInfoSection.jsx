@@ -650,6 +650,9 @@ export default function BusinessInfoSection({id,isSub}){
             }
         }, 1000);
 
+        setTimeout(() => {
+            setChangedPhone(false);
+        }, 100);
     },[])
 
 
@@ -763,7 +766,7 @@ export default function BusinessInfoSection({id,isSub}){
                 </div>
                 <div className="infoField addressField">
                     <label> {t("street address")}: </label>
-                    <textarea className="streetAddress" value={streetAddress} placeholder={t('type street address of your business')} onChange={handleStreetAddress}/>
+                    <textarea className="streetAddress" value={streetAddress ? streetAddress : ""} placeholder={t('type street address of your business')} onChange={handleStreetAddress}/>
                 </div>
 
                 <div className="saveButtonCont">

@@ -13,7 +13,6 @@ export const businessStore = createSlice({
             Cookies.set('menuSelected', action.payload);
         },
         setMenuCollapsed: (state, action) => {
-            console.log(action.payload)
             state.menuCollapsed = action.payload == "true";
             Cookies.set('menuCollapsed', action.payload);
         },

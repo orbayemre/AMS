@@ -17,13 +17,11 @@ export default function MyAppointmentCard({appointment, type}){
 
     
     const getBusiness = () =>{
-        console.log(appointment.business_id)
         axios.post(Params.api+"/api/business/get-business",{   
             "business_id" : appointment.business_id,
         })
         .then(({data})=>{
             if(data.status == "success"){
-                console.log(data.data);
                 setBusiness(data.data.business);
                 if(data.type == "sub"){
                     setIsSub(true);

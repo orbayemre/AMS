@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import moment from "moment";
 import { toast } from 'react-toastify';
@@ -9,10 +10,12 @@ import '../../styles/user.css';
 
 import Params from "../../params";
 import MyAppointmentCard from "../../components/Cards/MyAppointmentCard";
+import NavBar from "../../components/Others/NavBar";
 
 export default function MyAppointments({isSub}){
     
     const {t} = useTranslation();
+    const navigate = useNavigate();
     const {isLogin, userType, accessToken} = useSelector(state => state.authStore);
 
     const [activeTab,setActiveTab] = useState("upcoming");
@@ -88,7 +91,6 @@ export default function MyAppointments({isSub}){
     },[activeTab])
 
     useEffect(()=>{
-        console.log(activeData)
         if(activeData){
             setContentLoading(false);
         }
@@ -107,37 +109,40 @@ export default function MyAppointments({isSub}){
     },[]);
 
     return(
-        <div className="myappointments font-josefin-500">
-            <div className="myappointmentsHeader">
-                <h1> {t('My Appointments')} </h1>
-            </div>
-            <div className="myappointmentsBody">
-                <div className="control">
-                    <div className="controlTabs">
-                        <div className={"tabItem upcoming" + (activeTab == "upcoming" ? " active" : "")} onClick={()=>handleTabClick("upcoming")}>
-                            {t('Upcoming appointments')}
+        <>
+            <NavBar/>
+            <div className="myappointments font-josefin-500">
+                <div className="myappointmentsHeader">
+                    <h1> {t('My Appointments')} </h1>
+                </div>
+                <div className="myappointmentsBody">
+                    <div className="control">
+                        <div className="controlTabs">
+                            <div className={"tabItem upcoming" + (activeTab == "upcoming" ? " active" : "")} onClick={()=>handleTabClick("upcoming")}>
+                                {t('Upcoming appointments')}
+                            </div>
+                            <div className={"tabItem past" + (activeTab == "past" ? " active" : "")} onClick={()=>handleTabClick("past")}>
+                                {t('Past appointments')}
+                            </div>
                         </div>
-                        <div className={"tabItem past" + (activeTab == "past" ? " active" : "")} onClick={()=>handleTabClick("past")}>
-                            {t('Past appointments')}
-                        </div>
+                        
                     </div>
-                    
-                </div>
-                <div className="content">
-                    {
-                        contentLoading ?  <> Loading... </> :
-                        activeData.map((appointment,index) =>{
-                            return(
-                                <MyAppointmentCard
-                                    key={index}
-                                    appointment={appointment}
-                                    type={ activeTab == "past" ? "past" : appointment.status}
-                                />
-                            )
-                        })
-                    }
+                    <div className="content">
+                        {
+                            contentLoading ?  <> {t('Loading...')}</> :
+                            activeData.map((appointment,index) =>{
+                                return(
+                                    <MyAppointmentCard
+                                        key={index}
+                                        appointment={appointment}
+                                        type={ activeTab == "past" ? "past" : appointment.status}
+                                    />
+                                )
+                            })
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
