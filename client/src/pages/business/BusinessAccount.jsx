@@ -230,7 +230,7 @@ export default function BusinessAccount(){
                             <BusinessAppointmentsSection
                                 key={index}
                                 id={sub._id}
-                                isSub={false}
+                                isSub={true}
                             /> 
                         )
                     })

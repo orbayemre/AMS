@@ -53,7 +53,7 @@ export default function BusinessLogin(){
             .then(({data})=>{
                 if(data.status == "success"){
                     dispatch(setLogin( {data, userType:"business"}))
-                    navigate("/");
+                    navigate("/business/account");
                 }else{
                     toast.error(t(data.message), {
                         position: "bottom-center",

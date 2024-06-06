@@ -219,6 +219,23 @@
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.24);
     border:1px solid white;
 }
+.navbar .navbarCont .authBox .menuButton .avatar .noImage{
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    border: 2px solid #d5d5d5;
+}
+.navbar .navbarCont .authBox .menuButton .avatar .noImage svg{
+    width: 70%;
+}
+.navbar .navbarCont .authBox .menuButton .avatar .noImage svg path{
+    stroke: #d5d5d5;
+}
+
 div:has(> .MuiMenu-list){
     background-color: var(--first);
 }

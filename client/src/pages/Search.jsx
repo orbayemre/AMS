@@ -48,6 +48,10 @@ export default function Search(){
         navigate("/search" + queryParams);
         navigate(0);
     }
+    const handleClean = async () =>{
+        navigate("/search");
+        navigate(0);
+    }
 
     const setQueryParams = async (withPage=false) =>{
         var queryParams = [];
@@ -247,6 +251,13 @@ export default function Search(){
                             <div className="apply" onClick={handleApply}>
                                 {t('Apply Filters')}
                             </div>
+                            {
+                                ( (q && q!="") || (type && type!="") || (city && city!="") || (district && district!="")) &&
+                                <div className="clean" onClick={handleClean}>
+                                    {t('Clean Filters')}
+                                </div>
+
+                            }
                         </div>
                         <div className="resultsBody font-josefin-500">
                             <div className="searchInputCont">

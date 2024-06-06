@@ -5,7 +5,7 @@ export const businessStore = createSlice({
     name:'businessStore',
     initialState:{ 
         menuSelected:  (Cookies.get('menuSelected') && Cookies.get('menuSelected') != "" ) ? Cookies.get('menuSelected') : "appointments" ,
-        menuCollapsed:  (Cookies.get('menuCollapsed') && Cookies.get('menuCollapsed') != "" ) ? Cookies.get('menuCollapsed') == "true" : true ,
+        menuCollapsed:  (Cookies.get('menuCollapsed') && Cookies.get('menuCollapsed') != "" ) ? Cookies.get('menuCollapsed') == "true" : false ,
      }, 
     reducers:{
         setMenuSelected: (state, action) => {
